@@ -58,7 +58,7 @@ body {
   -ms-flex-direction: column;
   flex-direction: column;
   text-align: center;
-  padding: 2rem;
+  padding: 4rem 2rem;
 }
 
 @media only screen and (orientation: landscape) {
@@ -141,12 +141,10 @@ body {
 
   body.home .wrapper {
     background-color: var(--background-transparent-color);
-    height: var(--size);
     min-height: var(--size);
   }
 
   body.home .profile {
-    height: var(--size);
     min-height: var(--size);
     max-width: 35rem;
     margin: 0 auto;
