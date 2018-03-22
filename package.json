@@ -1,0 +1,15 @@
+{
+  "name": "dbtlr.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "serve": "serve -p 3333 public",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Drew Butler <hi@dbtlr.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "server": "^1.0.18"
+  }
+}
