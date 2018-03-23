@@ -1,5 +1,4 @@
 body.home {
-
   .profile {
     display: -moz-flex;
     display: -webkit-flex;
@@ -82,11 +81,11 @@ body.home {
       -webkit-transform: scale(1);
       -ms-transform: scale(1);
       transform: scale(1);
-      width: calc(100% - var(--size));
-      width: calc(100vw - var(--size));
+      width: calc(100% - var(--area-size));
+      width: calc(100vw - var(--area-size));
       left: 0;
       right: auto;
-      background-image: linear-gradient(45deg, rgba(132, 67, 138, 0.31) 21%, rgba(65, 129, 224, 0.188) 100%), url(/bg.jpg);
+      background-image: linear-gradient(45deg, rgba(132, 67, 138, 0.31) 21%, rgba(65, 129, 224, 0.188) 100%), var(--bg-image);
       background-position: top left;
       background-repeat: repeat, repeat;
       background-size: cover, cover;
@@ -120,14 +119,14 @@ body.home {
     }
 
     .profile {
-      width: var(--size);
+      width: var(--area-size);
     }
   }
 }
 
 @media only screen and (orientation: portrait) {
   body.home {
-    background-image: linear-gradient(45deg, rgba(132, 67, 138, 0.31) 21%, rgba(65, 129, 224, 0.188) 100%), url(/bg.jpg);
+    background-image: linear-gradient(45deg, rgba(132, 67, 138, 0.31) 21%, rgba(65, 129, 224, 0.188) 100%), var(--bg-image);
     background-position: top left;
     background-repeat: repeat, repeat;
     background-size: cover, cover;
@@ -139,11 +138,11 @@ body.home {
 
     .wrapper {
       background-color: var(--background-transparent-color);
-      min-height: var(--size);
+      min-height: var(--area-size);
     }
 
     .profile {
-      min-height: var(--size);
+      min-height: var(--area-size);
       max-width: 35rem;
       margin: 0 auto;
     }
