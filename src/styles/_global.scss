@@ -5,11 +5,11 @@ home, body {
 }
 
 body {
-  font-family: Raleway, Arial, sans-serif;
+  font-family: 'Open Sans', Arial, sans-serif;
   font-size: 1rem;
   font-weight: 300;
   line-height: 1.5rem;
-  word-wrap: break-word;
+  word-wrap: normal;
   background-color: var(--background-color);
   color: var(--dark-color);
 }
