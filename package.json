@@ -2,28 +2,23 @@
   "name": "dbtlr.com",
   "version": "1.0.0",
   "description": "",
-  "main": "",
+  "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
-    "start": "webpack-dev-server --mode development",
+    "build": "",
+    "start": "serve public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Drew Butler <hi@dbtlr.com>",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
-    "css-loader": "^2.1.1",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "file-loader": "^1.1.11",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.0.7",
-    "node-sass": "^4.12.0",
-    "sass-loader": "^6.0.7",
-    "server": "^1.0.18",
-    "style-loader": "^0.20.3",
-    "webpack": "^4.2.0",
-    "webpack-cli": "^3.3.1",
-    "webpack-dev-server": "^3.1.1"
-  }
+    "serve": "^11.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dbtlr/dbtlr.com.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dbtlr/dbtlr.com/issues"
+  },
+  "homepage": "https://github.com/dbtlr/dbtlr.com#readme"
 }

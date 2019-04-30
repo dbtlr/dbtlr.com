@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,600');
+
+:root {
+    --background-color: #FCFCFC;
+    --background-transparent-color: #FCFCFCCC;
+    --dark-color: #3C3744;
+    --primary-color: #3A7CA5;
+    --primary-light-color: #54C6EB;
+    --area-size: 25rem;
+  
+    --bg-image: url(/images/drew-butler-canggu.jpg);
+}
+  
+home, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.5rem;
+    word-wrap: normal;
+    background-color: var(--background-color);
+    color: var(--dark-color);
+}
+
+.wrapper {
+    width: 100%;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+body.not-found .wrapper {
+    min-height: 100vh;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    position: relative;
+    z-index: 1;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+    -moz-flex-grow: 0;
+    -webkit-flex-grow: 0;
+    -ms-flex-grow: 0;
+    flex-grow: 0;
+    -moz-flex-shrink: 0;
+    -webkit-flex-shrink: 0;
+    -ms-flex-shrink: 0;
+    flex-shrink: 0;
+    -moz-flex-direction: column;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+    max-width: 40rem;
+    margin: 0 auto;
+}
+  
+body.not-found h1 {
+    font-size: 4rem;
+    line-height: 5rem;
+    margin: 0 0 1rem;
+}
+  
+body.not-found p {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+  
+body.home .profile {
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    position: relative;
+    max-width: 100%;
+    z-index: 1;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+    -moz-flex-grow: 0;
+    -webkit-flex-grow: 0;
+    -ms-flex-grow: 0;
+    flex-grow: 0;
+    -moz-flex-shrink: 0;
+    -webkit-flex-shrink: 0;
+    -ms-flex-shrink: 0;
+    flex-shrink: 0;
+    -moz-flex-direction: column;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    text-align: center;
+    padding: 6rem 2rem;
+}
+  
+body.home .profile>* {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin: 0 0 0.75rem;
+    width: 100%;
+}
+  
+body.home .profile h1 {
+    font-size: 3rem;
+    margin: 0 0 2rem;
+}
+  
+body.home .profile ul {
+    list-style-type: none;
+    padding: 0;
+}
+  
+body.home nav a {
+    color: var(--dark-color);
+    display: inline-block;
+
+    height: 3rem;
+    width: 3rem;
+    line-height: 3rem;
+    font-size: 1.5rem;
+
+    border: solid 1px transparent;
+}
+body.home nav a:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+  
+body.home nav a:hover {
+    border: solid 1px var(--primary-color);
+    border-radius: 2rem;
+    text-decoration: none;
+}
+  
+@media only screen and (orientation: landscape) {
+    body.home {
+        min-width: 320px;
+        overflow-x: hidden;
+    }
+    
+    body.home:before {
+        content: '';
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 0;
+        -moz-pointer-events: none;
+        -webkit-pointer-events: none;
+        -ms-pointer-events: none;
+        pointer-events: none;
+        -moz-transform: scale(1);
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+        width: calc(100% - var(--area-size));
+        width: calc(100vw - var(--area-size));
+        left: 0;
+        right: auto;
+        background-image: linear-gradient(45deg, rgba(132, 67, 138, 0.31) 21%, rgba(65, 129, 224, 0.188) 100%), var(--bg-image);
+        background-position: top left;
+        background-repeat: repeat, repeat;
+        background-size: cover, cover;
+        background-attachment: scroll;
+        background-color: var(--background-color);
+    }
+  
+    body.home .wrapper {
+        min-height: 100vh;
+        -webkit-overflow-scrolling: touch;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: flex;
+        -moz-flex-direction: row;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -moz-align-items: stretch;
+        -webkit-align-items: stretch;
+        -ms-align-items: stretch;
+        align-items: stretch;
+        -moz-justify-content: flex-end;
+        -webkit-justify-content: flex-end;
+        -ms-justify-content: flex-end;
+        justify-content: flex-end;
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+        padding: 0 0 0 0.125rem;
+    }
+  
+    body.home .profile {
+        width: var(--area-size);
+    }
+}
+  
+@media only screen and (orientation: portrait) {
+    body.home {
+        background-image: linear-gradient(45deg, rgba(132, 67, 138, 0.31) 21%, rgba(65, 129, 224, 0.188) 100%), var(--bg-image);
+        background-position: top left;
+        background-repeat: repeat, repeat;
+        background-size: cover, cover;
+        background-attachment: scroll;
+        background-color: var(--background-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    body.home .wrapper {
+        background-color: var(--background-transparent-color);
+        min-height: var(--area-size);
+    }
+  
+    body.home .profile {
+        min-height: var(--area-size);
+        max-width: 35rem;
+        margin: 0 auto;
+    }
+}
+  
+@media only screen and (orientation: portrait) {
+    body.home .profile h1 {
+        font-size: 3rem;
+    }
+  
+    body.home .profile p {
+        font-size: 1.75rem;
+        line-height: 2.5rem;
+    }
+}
+  
+@media only screen and (max-device-width: 480px) and (orientation: portrait) {
+    body.home .profile {
+        max-width: 45rem;
+    }
+    
+    body.home .profile h1 {
+        font-size: 5rem;
+        margin: 0 0 2rem;
+    }
+  
+    body.home .profile p {
+        font-size: 2.25rem;
+        line-height: 3.5rem;
+    }
+  
+    body.home .profile nav a {
+        height: 5rem;
+        width: 5rem;
+        line-height: 5rem;
+        font-size: 4rem;
+        margin: 0 1rem;
+    }
+}
+  
