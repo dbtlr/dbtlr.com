@@ -1,1 +1,1 @@
-# Static site for https://dbtlr.com
+# Blog for dbtlr.com
