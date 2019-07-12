@@ -1,12 +1,9 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "dbtlr.com",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "The blog for dbtlr.com",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
-  },
+  "author": "Drew Butler <hi@dbtlr.com>",
   "dependencies": {
     "gatsby": "^2.13.4",
     "gatsby-image": "^2.2.4",
@@ -38,15 +35,12 @@
   "devDependencies": {
     "prettier": "^1.18.2"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
-  "keywords": [
-    "gatsby"
-  ],
+  "homepage": "https://dbtlr.com",
   "license": "MIT",
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/dbtlr/dbtlr.com.git"
   },
   "scripts": {
     "build": "gatsby build",
