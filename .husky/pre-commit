@@ -1,0 +1,5 @@
+# Verify that the app meets basic typechecking
+pnpm typecheck
+
+# Verify that changed files are not breaking the rules
+pnpm lint-staged
