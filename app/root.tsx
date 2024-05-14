@@ -1,3 +1,6 @@
+import '@fontsource/inter';
+
+import { LinksFunction } from '@remix-run/cloudflare';
 import {
   Links,
   Meta,
@@ -5,6 +8,12 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
+
+import stylesheet from '~/styles/index.css?url';
+
+export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: stylesheet },
+];
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
