@@ -36,7 +36,7 @@ const links = [
 export default function Index() {
   return (
     <main className="flex flex-col gap-5">
-      <div className="flex flex-col items-center md:flex-row md:justify-between md:gap-x-24">
+      <div className="flex flex-col items-center gap-y-10 md:flex-row md:justify-between md:gap-x-24">
         <div className="flex flex-col gap-6">
           <h1 className="text-3xl font-bold">
             Hi there, I&apos;m <span className="text-accent">Drew</span> 👋
@@ -48,7 +48,7 @@ export default function Index() {
             passion for movies and fantasy novels.
           </p>
           <nav>
-            <ul className="flex flex-row items-center gap-4">
+            <ul className="flex flex-row items-center justify-center gap-4 md:justify-start">
               {links.map(({ title, href, image: Image }, i) => (
                 <li key={i}>
                   <a href={href} target="_blank" rel="noreferrer" title={title}>
@@ -60,7 +60,7 @@ export default function Index() {
           </nav>
         </div>
         <div>
-          <img src={drewImg} alt="Drew Memoji" className="w-96" />
+          <img src={drewImg} alt="Drew Memoji" className="max-w-96" />
         </div>
       </div>
     </main>

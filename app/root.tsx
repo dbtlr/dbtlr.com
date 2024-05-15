@@ -9,6 +9,7 @@ import {
 } from '@remix-run/react';
 import MaterialSymbol from 'material-symbols/index.css?url';
 
+import { PageFooter } from '~/components/PageFooter';
 import { PageHeader } from '~/components/PageHeader';
 import stylesheet from '~/styles/index.css?url';
 
@@ -20,14 +21,14 @@ export const links: LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="min-h-screen">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body className="bg-slate-900 text-gray-100">
+      <body className="min-h-screen bg-slate-900 text-gray-100">
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -38,9 +39,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return (
-    <div className="mx-auto flex max-w-screen-lg flex-col gap-16 px-3 py-6">
+    <div className="mx-auto flex min-h-screen max-w-screen-lg flex-col gap-16 p-6">
       <PageHeader />
-      <Outlet />
+      <div className="grow">
+        <Outlet />
+      </div>
+      <PageFooter />
     </div>
   );
 }
