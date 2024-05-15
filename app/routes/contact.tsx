@@ -38,7 +38,7 @@ export async function action({ request, context }: ActionFunctionArgs) {
     return json({ success: false, errors });
   }
 
-  const env = context.env as MAILER_ENV;
+  const env = context.cloudflare.env as MAILER_ENV;
 
   if (env.MAILERSEND_API_KEY === undefined) {
     return json({
