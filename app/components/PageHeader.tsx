@@ -2,8 +2,8 @@ import Lightbulb from '~/images/lightbulb.svg?react';
 
 const links = [
   {
-    href: 'https://github.com/dbtlr',
-    label: 'Github',
+    href: '/contact',
+    label: 'Contact',
   },
 ];
 

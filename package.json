@@ -28,6 +28,7 @@
     "@remix-run/react": "^2.9.2",
     "@remix-run/serve": "^2.9.2",
     "isbot": "^4.1.0",
+    "mailersend": "^2.2.0",
     "material-symbols": "^0.18.0",
     "miniflare": "^3.20240404.0",
     "react": "^18.2.0",
