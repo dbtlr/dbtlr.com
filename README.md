@@ -1,13 +1,13 @@
-# Welcome to Remix + Vite!
+# Drew Butler
 
-📖 See the [Remix docs](https://remix.run/docs) and the [Remix Vite docs](https://remix.run/docs/en/main/guides/vite) for details on supported features.
+Remix website for <https://dbtlr.com>
 
 ## Typegen
 
 Generate types for your Cloudflare bindings in `wrangler.toml`:
 
 ```sh
-npm run typegen
+pnpm run typegen
 ```
 
 You will need to rerun typegen whenever you make changes to `wrangler.toml`.
@@ -17,14 +17,14 @@ You will need to rerun typegen whenever you make changes to `wrangler.toml`.
 Run the Vite dev server:
 
 ```sh
-npm run dev
+pnpm run dev
 ```
 
 To run Wrangler:
 
 ```sh
-npm run build
-npm run start
+pnpm run build
+pnpm run start
 ```
 
 ## Deployment
@@ -36,13 +36,13 @@ npm run start
 First, build your app for production:
 
 ```sh
-npm run build
+pnpm run build
 ```
 
 Then, deploy your app to Cloudflare Pages:
 
 ```sh
-npm run deploy
+pnpm run deploy
 ```
 
 [bindings]: https://developers.cloudflare.com/pages/functions/bindings/
