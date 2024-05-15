@@ -1,5 +1,4 @@
-import '@fontsource/inter';
-
+import Inter from '@fontsource/inter/index.css?url';
 import { LinksFunction } from '@remix-run/cloudflare';
 import {
   Links,
@@ -8,11 +7,15 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
+import MaterialSymbol from 'material-symbols/index.css?url';
 
+import { PageHeader } from '~/components/PageHeader';
 import stylesheet from '~/styles/index.css?url';
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: stylesheet },
+  { rel: 'stylesheet', href: MaterialSymbol },
+  { rel: 'stylesheet', href: Inter },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -24,7 +27,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="bg-slate-900 text-gray-100">
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -34,5 +37,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <div className="mx-auto flex max-w-screen-lg flex-col gap-16 px-3 py-6">
+      <PageHeader />
+      <Outlet />
+    </div>
+  );
 }
