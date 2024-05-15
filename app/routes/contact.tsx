@@ -38,7 +38,9 @@ export async function action({ request, context }: ActionFunctionArgs) {
     return json({ success: false, errors });
   }
 
-  if (process.env.MAILERSEND_API_KEY === undefined) {
+  const env = context.env as MAILER_ENV;
+
+  if (env.MAILERSEND_API_KEY === undefined) {
     return json({
       success: false,
       errors: {
@@ -48,7 +50,7 @@ export async function action({ request, context }: ActionFunctionArgs) {
   }
 
   try {
-    await sendMail({ name, email, message, env: context.env as MAILER_ENV });
+    await sendMail({ name, email, message, env });
     return json({ success: true, errors });
   } catch (e) {
     console.error(e);
