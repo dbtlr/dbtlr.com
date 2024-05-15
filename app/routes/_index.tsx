@@ -3,6 +3,7 @@ import type { MetaFunction } from '@remix-run/cloudflare';
 import drewImg from '~/images/drew-memoji.png';
 import Github from '~/images/github.svg?react';
 import LinkedIn from '~/images/linkedin.svg?react';
+import Mail from '~/images/mail.svg?react';
 import X from '~/images/x.svg?react';
 
 export const meta: MetaFunction = () => {
@@ -17,19 +18,24 @@ export const meta: MetaFunction = () => {
 
 const links = [
   {
-    title: 'Github',
+    title: 'Follow me on Github',
     href: 'https://github.com/dbltr',
     image: Github,
   },
   {
-    title: 'LinkedIn',
+    title: 'Find me on LinkedIn',
     href: 'https://linkedin.com/in/drewbutler',
     image: LinkedIn,
   },
   {
-    title: 'X',
+    title: 'Follow me on X',
     href: 'https://x.com/drewbutlerme',
     image: X,
+  },
+  {
+    title: 'Message Me',
+    href: 'mailto:hi@dbtlr.com',
+    image: Mail,
   },
 ];
 
