@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 import { InputField } from '~/components/Form/InputField';
 import { TextareaField } from '~/components/Form/TextareaField';
-import { sendMail } from '~/utils/sendMail';
+import { MAILER_ENV, sendMail } from '~/utils/sendMail';
 
 interface ErrorResponse {
   name?: string;
@@ -13,7 +13,7 @@ interface ErrorResponse {
   unknown?: string;
 }
 
-export async function action({ request }: ActionFunctionArgs) {
+export async function action({ request, context }: ActionFunctionArgs) {
   const formData = await request.formData();
 
   const email = String(formData.get('email'));
@@ -48,7 +48,7 @@ export async function action({ request }: ActionFunctionArgs) {
   }
 
   try {
-    await sendMail({ name, email, message });
+    await sendMail({ name, email, message, env: context.env as MAILER_ENV });
     return json({ success: true, errors });
   } catch (e) {
     console.error(e);
