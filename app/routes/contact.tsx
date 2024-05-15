@@ -1,10 +1,10 @@
 import { ActionFunctionArgs, json } from '@remix-run/cloudflare';
 import { Form, useActionData } from '@remix-run/react';
-import { EmailParams, MailerSend, Recipient, Sender } from 'mailersend';
 import { useEffect } from 'react';
 
 import { InputField } from '~/components/Form/InputField';
 import { TextareaField } from '~/components/Form/TextareaField';
+import { sendMail } from '~/utils/sendMail';
 
 interface ErrorResponse {
   name?: string;
@@ -47,28 +47,8 @@ export async function action({ request }: ActionFunctionArgs) {
     });
   }
 
-  const mailersend = new MailerSend({
-    apiKey: process.env.MAILERSEND_API_KEY,
-  });
-
-  const recipients = [
-    new Recipient(process.env.EMAIL_TO || '', process.env.EMAIL_TO_NAME || ''),
-  ];
-
-  const emailParams = new EmailParams()
-    .setFrom(
-      new Sender(
-        process.env.EMAIL_FROM || '',
-        process.env.EMAIL_FROM_NAME || '',
-      ),
-    )
-    .setTo(recipients)
-    .setSubject(process.env.EMAIL_SUBJECT || '')
-    .setHtml(`From ${name} - ${email}<br /><br /${message}`)
-    .setText(`From ${name} - ${email}\n\n${message}`);
-
   try {
-    await mailersend.email.send(emailParams);
+    await sendMail({ name, email, message });
     return json({ success: true, errors });
   } catch (e) {
     console.error(e);
