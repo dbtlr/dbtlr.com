@@ -39,9 +39,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return (
-    <div className="mx-auto flex min-h-screen max-w-screen-lg flex-col gap-16 p-6">
+    <div className="mx-auto flex min-h-screen max-w-screen-lg flex-col gap-16">
       <PageHeader />
-      <div className="grow">
+      <div className="grow px-6">
         <Outlet />
       </div>
       <PageFooter />

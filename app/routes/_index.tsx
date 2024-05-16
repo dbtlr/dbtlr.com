@@ -42,7 +42,7 @@ const links = [
 export default function Index() {
   return (
     <main className="flex flex-col gap-5">
-      <div className="flex flex-col items-center gap-y-10 md:flex-row md:justify-between md:gap-x-24">
+      <div className="flex flex-col items-center gap-y-10 md:flex-row md:items-start md:justify-between md:gap-x-24">
         <div className="flex flex-col gap-6">
           <h1 className="text-3xl font-bold">
             Hi there, I&apos;m <span className="text-accent">Drew</span> 👋
