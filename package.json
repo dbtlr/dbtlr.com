@@ -23,11 +23,13 @@
   },
   "dependencies": {
     "@fontsource/inter": "^5.0.18",
+    "@headlessui/react": "^2.0.3",
     "@remix-run/cloudflare": "^2.9.2",
     "@remix-run/cloudflare-pages": "^2.9.2",
     "@remix-run/node": "^2.9.2",
     "@remix-run/react": "^2.9.2",
     "@remix-run/serve": "^2.9.2",
+    "clsx": "^2.1.1",
     "isbot": "^4.1.0",
     "material-symbols": "^0.18.0",
     "miniflare": "^3.20240404.0",
