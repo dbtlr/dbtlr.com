@@ -1,17 +1,21 @@
 import Inter from '@fontsource/inter/index.css?url';
-import { LinksFunction } from '@remix-run/cloudflare';
+import { ErrorResponse, LinksFunction } from '@remix-run/cloudflare';
 import {
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useRouteError,
 } from '@remix-run/react';
 import MaterialSymbol from 'material-symbols/index.css?url';
 
 import { PageFooter } from '~/components/PageFooter';
 import { PageHeader } from '~/components/PageHeader';
 import stylesheet from '~/styles/index.css?url';
+
+import { ErrorPage } from './components/ErrorPage';
+import { NotFound } from './components/NotFound';
 
 export const links: LinksFunction = () => [
   { rel: 'stylesheet', href: stylesheet },
@@ -35,6 +39,18 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </body>
     </html>
   );
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError() as ErrorResponse;
+
+  if (error?.status === 404) {
+    return <NotFound />;
+  }
+
+  console.error(error);
+
+  return <ErrorPage />;
 }
 
 export default function App() {
