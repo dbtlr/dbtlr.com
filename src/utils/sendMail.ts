@@ -38,6 +38,7 @@ export async function sendMail({ name, email, message, env }: SendMailParams) {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(data),
   });
