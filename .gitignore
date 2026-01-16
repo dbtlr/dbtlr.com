@@ -8,3 +8,7 @@ node_modules
 .dev.vars
 
 .wrangler
+
+# ESLint cache
+.eslintcache
+/node_modules/.cache/eslint

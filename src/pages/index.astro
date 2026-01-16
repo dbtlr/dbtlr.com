@@ -1,31 +1,28 @@
 ---
+import { Icon } from 'astro-icon/components';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import drewImg from '~/images/drew-memoji.png';
-import Github from '~/images/github.svg?react';
-import LinkedIn from '~/images/linkedin.svg?react';
-import Mail from '~/images/mail.svg?react';
-import X from '~/images/x.svg?react';
 
 const links = [
   {
     title: 'Follow me on Github',
     href: 'https://github.com/dbltr',
-    image: Github,
+    icon: 'github',
   },
   {
     title: 'Find me on LinkedIn',
     href: 'https://linkedin.com/in/drewbutler',
-    image: LinkedIn,
+    icon: 'linkedin',
   },
   {
     title: 'Follow me on X',
     href: 'https://x.com/drewbutlerme',
-    image: X,
+    icon: 'x',
   },
   {
     title: 'Message Me',
     href: 'mailto:hi@dbtlr.com',
-    image: Mail,
+    icon: 'mail',
   },
 ];
 ---
@@ -50,10 +47,13 @@ const links = [
             class="flex flex-row items-center justify-center gap-4 md:justify-start"
           >
             {
-              links.map(({ title, href, image: Image }) => (
+              links.map(({ title, href, icon }) => (
                 <li>
                   <a href={href} target="_blank" rel="noreferrer" title={title}>
-                    <Image className="size-8 text-white hover:translate-y-1 hover:text-accent" />
+                    <Icon
+                      name={icon}
+                      class="size-8 text-white hover:translate-y-1 hover:text-accent"
+                    />
                   </a>
                 </li>
               ))

@@ -1,5 +1,5 @@
 ---
-import { Heart } from 'lucide-react';
+import { Icon } from 'astro-icon/components';
 ---
 
 <footer
@@ -7,7 +7,9 @@ import { Heart } from 'lucide-react';
 >
   <div>Copyright &copy; 2024 Drew Butler.</div>
   <div class="flex items-center justify-center gap-1 md:justify-start">
-    Built with <Heart className="size-4 fill-accent text-accent" /> in Brooklyn,
-    NY.
+    Built with <Icon
+      name="lucide:heart"
+      class="size-4 fill-accent text-accent"
+    /> in Brooklyn, NY.
   </div>
 </footer>

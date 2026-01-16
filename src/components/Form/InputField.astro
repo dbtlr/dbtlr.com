@@ -1,5 +1,5 @@
 ---
-import { AlertCircle } from 'lucide-react';
+import { Icon } from 'astro-icon/components';
 
 interface Props {
   name: string;
@@ -41,7 +41,11 @@ const {
     {
       error && (
         <div class="pointer-events-none absolute right-0 top-1.5 flex items-center pr-3">
-          <AlertCircle className="size-5 text-red-500" aria-hidden="true" />
+          <Icon
+            name="lucide:alert-circle"
+            class="size-5 text-red-500"
+            aria-hidden="true"
+          />
         </div>
       )
     }

@@ -1,6 +1,5 @@
 ---
-import { Menu, X } from 'lucide-react';
-import Lightbulb from '~/images/lightbulb.svg?react';
+import { Icon } from 'astro-icon/components';
 
 const navigation = [
   {
@@ -21,7 +20,7 @@ const currentPath = Astro.url.pathname;
 <header>
   <div class="relative mx-6 mt-6 flex flex-row items-center justify-between">
     <h2 class="flex -rotate-1 flex-row items-start gap-2">
-      <Lightbulb className="size-8 text-yellow-400" />
+      <Icon name="lightbulb" class="size-8 text-yellow-400" />
       <a
         href="/"
         class="border-b-4 border-accent pb-1 text-3xl font-extrabold outline-none md:text-4xl"
@@ -59,8 +58,18 @@ const currentPath = Astro.url.pathname;
       >
         <span class="absolute -inset-0.5"></span>
         <span class="sr-only">Open main menu</span>
-        <Menu id="menu-icon-open" className="block size-8" aria-hidden="true" />
-        <X id="menu-icon-close" className="hidden size-8" aria-hidden="true" />
+        <Icon
+          id="menu-icon-open"
+          name="lucide:menu"
+          class="block size-8"
+          aria-hidden="true"
+        />
+        <Icon
+          id="menu-icon-close"
+          name="lucide:x"
+          class="hidden size-8"
+          aria-hidden="true"
+        />
       </button>
     </div>
   </div>
