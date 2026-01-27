@@ -24,6 +24,7 @@
     "@astrojs/check": "0.9.6",
     "@astrojs/cloudflare": "12.6.12",
     "@fontsource/inter": "^5.1.0",
+    "@iconify-json/lucide": "^1.2.87",
     "@tailwindcss/vite": "^4.0.0",
     "astro": "^5.16.15",
     "astro-icon": "^1.1.5",

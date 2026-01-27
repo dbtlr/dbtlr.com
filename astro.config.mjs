@@ -12,7 +12,13 @@ export default defineConfig({
       enabled: true,
     },
   }),
-  integrations: [icon()],
+  integrations: [
+    icon({
+      include: {
+        lucide: ['*']
+      }
+    })
+  ],
   vite: {
     plugins: [tailwindcss()],
     ssr: {
