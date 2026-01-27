@@ -1,0 +1,115 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const navigation = [
+  {
+    href: '/',
+    label: 'Home',
+    name: 'home',
+  },
+  {
+    href: '/contact',
+    label: 'Contact',
+    name: 'contact',
+  },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header>
+  <div class="relative mx-6 mt-6 flex flex-row items-center justify-between">
+    <h2 class="flex -rotate-1 flex-row items-start gap-2">
+      <Icon name="lightbulb" class="size-8 text-yellow-400" />
+      <a
+        href="/"
+        class="border-b-4 border-accent pb-1 text-3xl font-extrabold outline-none md:text-4xl"
+      >
+        Drew Butler
+      </a>
+    </h2>
+    <div class="hidden sm:ml-6 sm:block">
+      <div class="flex space-x-4">
+        {
+          navigation.map((item) => (
+            <a
+              href={item.href}
+              class={`rounded-md px-3 py-2 text-sm font-medium hover:underline ${
+                item.href === currentPath
+                  ? 'bg-accent text-white'
+                  : 'text-gray-300 hover:text-accent'
+              }`}
+              aria-current={item.href === currentPath ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
+      <button
+        id="mobile-menu-button"
+        type="button"
+        class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+      >
+        <span class="absolute -inset-0.5"></span>
+        <span class="sr-only">Open main menu</span>
+        <Icon
+          id="menu-icon-open"
+          name="lucide:menu"
+          class="block size-8"
+          aria-hidden="true"
+        />
+        <Icon
+          id="menu-icon-close"
+          name="lucide:x"
+          class="hidden size-8"
+          aria-hidden="true"
+        />
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="absolute inset-x-0 bottom-0 top-16 mt-6 hidden bg-gray-800/95 sm:hidden"
+  >
+    <div class="space-y-1 px-2 pb-3 pt-2">
+      {
+        navigation.map((item) => (
+          <a
+            href={item.href}
+            class={`block rounded-md px-3 py-2 text-base font-medium hover:underline ${
+              item.href === currentPath
+                ? 'bg-accent text-white'
+                : 'bg-gray-800 text-gray-300 hover:text-accent'
+            }`}
+            aria-current={item.href === currentPath ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</header>
+
+<script>
+  const button = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+  const openIcon = document.getElementById('menu-icon-open');
+  const closeIcon = document.getElementById('menu-icon-close');
+
+  button?.addEventListener('click', () => {
+    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+    button.setAttribute('aria-expanded', String(!isExpanded));
+    menu?.classList.toggle('hidden');
+    openIcon?.classList.toggle('hidden');
+    closeIcon?.classList.toggle('hidden');
+  });
+</script>

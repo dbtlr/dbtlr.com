@@ -1,0 +1,31 @@
+---
+import PageFooter from '~/components/PageFooter.astro';
+import PageHeader from '~/components/PageHeader.astro';
+import '~/styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = 'Drew Butler', description = 'Drew Butler' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="min-h-screen">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-slate-900 text-gray-100">
+    <div class="mx-auto flex min-h-screen max-w-screen-lg flex-col gap-16">
+      <PageHeader />
+      <div class="grow px-6">
+        <slot />
+      </div>
+      <PageFooter />
+    </div>
+  </body>
+</html>

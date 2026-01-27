@@ -2,7 +2,13 @@ node_modules
 
 /.cache
 /build
+/dist
+/.astro
 .env
 .dev.vars
 
 .wrangler
+
+# ESLint cache
+.eslintcache
+/node_modules/.cache/eslint
