@@ -1,5 +1,7 @@
 {
   "name": "dbtlr.com",
+  "description": "A personal blog about software development, technology, and life.",
+  "author": "Drew Butler <hi@dbtlr.com>",
   "type": "module",
   "version": "0.1.0",
   "private": true,
