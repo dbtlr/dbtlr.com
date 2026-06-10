@@ -10,14 +10,11 @@ var list = null;
 var active = 0;
 var results = ITEMS;
 
-function load() {
-  if (loaded) return Promise.resolve();
-  return fetch('/search.json')
-    .then(function (res) { return res.json(); })
-    .then(function (items) {
-      ITEMS = items;
-      loaded = true;
-    });
+async function load() {
+  if (loaded) return;
+  const res = await fetch('/search.json');
+  ITEMS = await res.json();
+  loaded = true;
 }
 
 function esc(s) {
