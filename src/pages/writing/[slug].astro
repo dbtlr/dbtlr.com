@@ -1,0 +1,56 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { fmtLong, readingTime } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('writing')).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+  );
+  return posts.map((post, i) => ({
+    params: { slug: post.id },
+    props: {
+      post,
+      // sorted newest-first: "previous" is the older post, "next" the newer
+      prev: posts[i + 1] ?? null,
+      next: posts[i - 1] ?? null,
+    },
+  }));
+}
+
+const { post, prev, next } = Astro.props;
+const { Content } = await render(post);
+---
+<Base title={`${post.data.title} — dbtlr.com`} description={post.data.blurb} current="writing">
+  <div class="col col-narrow">
+    <article>
+      <div class="flex gap-3 items-center mt-20 mb-4.5 text-[13px] max-md:mt-12 max-md:flex-wrap">
+        <a class="text-accent-cool mr-1" href="/writing/">← Writing</a>
+        <time class="text-text-3">{fmtLong(post.data.date)}</time>
+        <span class="w-0.75 h-0.75 rounded-full bg-text-3"></span>
+        <span class="text-accent-warm">#{post.data.tag}</span>
+        <span class="w-0.75 h-0.75 rounded-full bg-text-3"></span>
+        <span class="text-text-3">{readingTime(post.body ?? '')}</span>
+      </div>
+      <h1 class="m-0 mb-4 text-[42px] leading-[1.15] font-[650] tracking-[-0.02em] max-md:text-3xl">{post.data.title}</h1>
+      <p class="text-lg leading-[1.6] text-text-2 m-0 mb-10 max-md:text-[16.5px]">{post.data.lede ?? post.data.blurb}</p>
+
+      <div class="body">
+        <Content />
+      </div>
+
+      <nav class="mt-14 border-t border-line-strong pt-5 flex justify-between gap-6 max-md:flex-col max-md:gap-4">
+        {prev && (
+          <a class="text-sm text-text-2 max-w-[44%] transition-colors duration-120 hover:text-accent-cool max-md:max-w-full" href={`/writing/${prev.id}/`}>
+            <small class="block text-[11.5px] text-text-3 mb-1 tracking-[0.06em] uppercase">← Previous</small>{prev.data.title}
+          </a>
+        )}
+        {next && (
+          <a class="ml-auto text-right text-sm text-text-2 max-w-[44%] transition-colors duration-120 hover:text-accent-cool max-md:max-w-full max-md:ml-0 max-md:text-left" href={`/writing/${next.id}/`}>
+            <small class="block text-[11.5px] text-text-3 mb-1 tracking-[0.06em] uppercase">Next →</small>{next.data.title}
+          </a>
+        )}
+      </nav>
+    </article>
+  </div>
+</Base>

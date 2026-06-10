@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+
+const now = [
+  { label: 'Building', value: 'relaymesh v0.9 — bulk replay and delivery insights' },
+  { label: 'Writing', value: 'a series on CDC pipelines with Postgres and DuckDB' },
+  { label: 'Reading', value: '“A Philosophy of Software Design”, again, slowly' },
+];
+const elsewhere = [
+  { label: 'GitHub', value: 'github.com/dbtlr' },
+  { label: 'Email', value: 'hello@dbtlr.com' },
+  { label: 'RSS', value: 'dbtlr.com/feed.xml' },
+];
+---
+<Base title="About — dbtlr.com" description="Software engineer building small self-hosted tools and writing about what breaks along the way." current="about">
+  <div class="col">
+    <div class="grid grid-cols-[1fr_200px] gap-12 items-start pt-18 max-md:grid-cols-1 max-md:gap-7 max-md:pt-12">
+      <div>
+        <h1 class="m-0 mb-4.5 text-[34px] font-semibold tracking-[-0.015em] max-md:text-[28px]">Hi, I’m dbtlr.</h1>
+        <div class="body">
+          <p>I’m a software engineer who likes the unglamorous parts of the stack: queues, logs, retries, deploys. I build <a href="/projects/">small self-hosted tools</a> and <a href="/writing/">write</a> about what breaks along the way.</p>
+          <p>My bias is toward <b>boring technology</b> held together by good observability. The best system is one you can explain on a whiteboard and debug at 2am with grep.</p>
+          <p>This site has no analytics, no tracking, and no newsletter popup. If something here was useful, an email is the nicest possible signal.</p>
+        </div>
+      </div>
+      <div class="ph h-60 max-md:order-first max-md:h-50 max-md:max-w-70"><span>portrait · drop photo here</span></div>
+    </div>
+
+    <section class="mt-10">
+      <SectionHead label="Now" />
+      <div class="flex flex-col">
+        {now.map((row) => (
+          <div class="flex gap-4 py-3.5 border-b border-line text-[15px]">
+            <b class="font-semibold min-w-30">{row.label}</b><span class="text-text-2">{row.value}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <SectionHead label="Elsewhere" />
+      <div class="flex flex-col">
+        {elsewhere.map((row) => (
+          <div class="flex gap-4 py-3.5 border-b border-line text-[15px]">
+            <b class="font-semibold min-w-30">{row.label}</b><span class="text-text-2">{row.value}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</Base>

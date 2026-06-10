@@ -1,0 +1,9 @@
+.saga.toml
+node_modules/
+dist/
+.astro/
+.DS_Store
+artifacts/
+.claude/settings.local.json
+CLAUDE.local.json
+AGENTS.local.json

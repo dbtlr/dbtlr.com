@@ -1,0 +1,23 @@
+---
+interface Props {
+  href: string;
+  date: string;
+  title: string;
+  blurb: string;
+  tag?: string;
+}
+
+const { href, date, title, blurb, tag } = Astro.props;
+---
+<a
+  class="group grid grid-cols-[96px_1fr] gap-6 items-baseline py-5.5 border-b border-line max-md:grid-cols-1 max-md:gap-1.5 max-md:py-4.5"
+  href={href}
+>
+  <time class="text-[13px] text-text-3 tabular-nums">{date}</time>
+  <span>
+    <h3 class="m-0 mb-1.5 text-lg font-semibold tracking-[-0.01em] leading-[1.35] transition-colors duration-120 group-hover:text-accent-cool max-md:text-[16.5px]">
+      {title}{tag && <span class="ml-2.5 font-mono text-[11px] text-accent-warm font-normal tracking-normal">#{tag}</span>}
+    </h3>
+    <p class="m-0 text-[14.5px] leading-[1.55] text-text-2 max-md:text-sm">{blurb}</p>
+  </span>
+</a>

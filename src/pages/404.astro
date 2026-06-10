@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+
+const action = 'text-[13.5px] font-semibold px-4 py-2 rounded-[7px] border border-line-strong text-text-2 transition-all duration-120 hover:text-text hover:border-text-3';
+---
+<Base title="Page not found — dbtlr.com">
+  <div class="col">
+    <section class="pt-24">
+      <p class="font-mono text-[13px] text-accent-warm m-0 mb-4.5">HTTP 404</p>
+      <h1 class="m-0 mb-4 text-[44px] font-[650] tracking-[-0.02em] leading-[1.12] max-md:text-[32px]">This page doesn’t exist.</h1>
+      <p class="m-0 text-[16.5px] leading-[1.7] text-text-2 max-w-[50ch]">A 404 is a verdict — asking again won’t change it. But the rest of the site is alive and well, and search will get you there faster than guessing URLs.</p>
+      <div class="flex gap-3 mt-7 flex-wrap">
+        <a class="text-[13.5px] font-semibold px-4 py-2 rounded-[7px] bg-accent-cool text-btn-dark transition-all duration-120 hover:brightness-110" href="/">Back home</a>
+        <button class:list={['searchbtn font-sans bg-transparent cursor-pointer', action]} type="button">Search the site · ⌘K</button>
+        <a class={action} href="/writing/">Browse writing</a>
+      </div>
+    </section>
+
+    <figure class="code max-w-120 mt-14">
+      <div class="code-bar">
+        <span class="code-file">access.log</span>
+        <span class="code-lang">log</span>
+      </div>
+      <pre><span class="c"># most recent request</span>
+GET /this-page <span class="k">→</span> <span class="s">404 Not Found</span>
+retries: <span class="s">0</span>  <span class="c">// see “the art of giving up”</span></pre>
+    </figure>
+  </div>
+</Base>

@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PostRow from '../../components/PostRow.astro';
+import { fmtShort } from '../../lib/format';
+
+const posts = (await getCollection('writing')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+const years = [...new Set(posts.map((p) => p.data.date.getUTCFullYear()))];
+---
+<Base title="Writing — dbtlr.com" description="Notes on distributed systems, developer tools, and keeping software simple." current="writing">
+  <div class="col">
+    <section class="pt-18 pb-10 max-md:pt-12">
+      <h1 class="m-0 mb-3.5 text-[34px] font-semibold tracking-[-0.015em] max-md:text-[28px]">Writing</h1>
+      <p class="m-0 text-base leading-[1.6] text-text-2 max-w-[58ch]">Notes on distributed systems, developer tools, and keeping software simple. Sporadic but sincere.</p>
+    </section>
+
+    {years.map((year) => (
+      <>
+        <div class="mt-12 pb-2.5 font-mono text-xs text-text-3 tracking-[0.08em]">{year}</div>
+        {posts
+          .filter((p) => p.data.date.getUTCFullYear() === year)
+          .map((post) => (
+            <PostRow
+              href={`/writing/${post.id}/`}
+              date={fmtShort(post.data.date)}
+              title={post.data.title}
+              blurb={post.data.blurb}
+              tag={post.data.tag}
+            />
+          ))}
+      </>
+    ))}
+  </div>
+</Base>

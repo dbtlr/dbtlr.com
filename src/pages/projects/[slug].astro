@@ -1,0 +1,62 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({ params: { slug: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+const meta = [project.data.lang, project.data.version, project.data.license].filter(Boolean).join(' · ');
+const buttons = [
+  { href: project.data.links?.github, label: 'View on GitHub', primary: true },
+  { href: project.data.links?.docs, label: 'Documentation', primary: false },
+  { href: project.data.links?.changelog, label: 'Changelog', primary: false },
+].filter((b) => b.href);
+---
+<Base title={`${project.data.name} — dbtlr.com`} description={project.data.blurb} current="projects">
+  <div class="col">
+    <section class="pt-18 max-md:pt-12">
+      <div class="flex gap-3 items-center mt-14 text-[13px]">
+        <a class="text-accent-cool" href="/projects/">← Projects</a>
+      </div>
+      <div class="flex items-baseline gap-3.5 flex-wrap mt-4.5">
+        <h1 class="m-0 text-[38px] font-[650] tracking-[-0.02em] max-md:text-3xl">{project.data.name}</h1>
+        <span class="font-mono text-xs text-accent-warm">{meta}</span>
+      </div>
+      <p class="m-0 mt-3 text-[17px] leading-[1.6] text-text-2 max-w-[54ch]">{project.data.tagline}</p>
+      {buttons.length > 0 && (
+        <div class="flex gap-3 mt-5.5 flex-wrap">
+          {buttons.map((b) =>
+            b.primary ? (
+              <a class="text-[13.5px] font-semibold px-4 py-2 rounded-[7px] bg-accent-cool text-btn-dark transition-all duration-120 hover:brightness-110" href={b.href}>{b.label}</a>
+            ) : (
+              <a class="text-[13.5px] font-semibold px-4 py-2 rounded-[7px] border border-line-strong text-text-2 transition-all duration-120 hover:text-text hover:border-text-3" href={b.href}>{b.label}</a>
+            )
+          )}
+        </div>
+      )}
+    </section>
+
+    <div class="mt-10">
+      <div class="ph h-95 max-md:h-50"><span>{project.data.shotLabel}</span></div>
+    </div>
+
+    <dl class="grid grid-cols-3 gap-px bg-line border-y border-line my-10 max-md:grid-cols-1">
+      {project.data.facts.map((fact) => (
+        <div class="bg-bg py-4.5 pr-5 max-md:py-3.5 max-md:pr-0">
+          <dt class="text-[11.5px] tracking-[0.08em] uppercase text-text-3 m-0 mb-1.5">{fact.label}</dt>
+          <dd class:list={['m-0', fact.mono ? 'font-mono text-[13px] text-text' : 'text-[15px] text-text font-medium']}>{fact.value}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <article>
+      <div class="body">
+        <Content />
+      </div>
+    </article>
+  </div>
+</Base>
