@@ -23,6 +23,7 @@ const navLinks = [
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>{title}</title>
 {description && <meta name="description" content={description} />}
+<link rel="alternate" type="application/rss+xml" title="dbtlr.com — Writing" href="/feed.xml" />
 </head>
 <body>
 <div class="col">
@@ -51,7 +52,7 @@ const navLinks = [
       <span>© 2026 dbtlr</span>
       <span class="flex gap-5">
         <a class="text-text-2 transition-colors duration-120 hover:text-text" href="#">GitHub</a>
-        <a class="text-text-2 transition-colors duration-120 hover:text-text" href="#">RSS</a>
+        <a class="text-text-2 transition-colors duration-120 hover:text-text" href="/feed.xml">RSS</a>
         <a class="text-text-2 transition-colors duration-120 hover:text-text" href="#">Email</a>
       </span>
     </div>
