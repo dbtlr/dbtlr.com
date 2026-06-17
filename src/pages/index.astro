@@ -2,12 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import SectionHead from '../components/SectionHead.astro';
-import PostRow from '../components/PostRow.astro';
-import { fmtLong } from '../lib/format';
 
-const posts = (await getCollection('writing'))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 4);
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 ---
 <Base title="Drew Butler" description="Drew Butler — a product-focused engineer and engineering leader building open-source tooling for agentic, AI-native development.">
@@ -24,17 +19,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
       </p>
     </section>
 
-    <SectionHead label="Recent writing" href="/writing/" linkText="All posts →" />
-    {posts.map((post) => (
-      <PostRow
-        href={`/writing/${post.id}/`}
-        date={fmtLong(post.data.date)}
-        title={post.data.title}
-        blurb={post.data.blurb}
-      />
-    ))}
-
-    <SectionHead label="Selected projects" href="/projects/" linkText="All projects →" class="mt-14" />
+    <SectionHead label="Selected projects" href="/projects/" linkText="All projects →" />
     {projects.map((project) => (
       <a class="group flex items-baseline gap-3.5 py-4 border-b border-line max-md:flex-wrap max-md:gap-y-1" href={`/projects/${project.id}/`}>
         <b class="text-base font-semibold transition-colors duration-120 group-hover:text-accent-cool">{project.data.name}</b>

@@ -11,7 +11,6 @@ const { title, description, current } = Astro.props;
 
 const navLink = 'text-sm text-text-2 transition-colors duration-120 hover:text-text max-md:text-[13px]';
 const navLinks = [
-  { href: '/writing/', label: 'Writing', key: 'writing' },
   { href: '/projects/', label: 'Projects', key: 'projects' },
   { href: '/about/', label: 'About', key: 'about' },
 ] as const;
@@ -24,7 +23,6 @@ const navLinks = [
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <title>{title}</title>
 {description && <meta name="description" content={description} />}
-<link rel="alternate" type="application/rss+xml" title="Drew Butler — Writing" href="/feed.xml" />
 </head>
 <body>
 <div class="col">
@@ -52,9 +50,8 @@ const navLinks = [
     <div class="border-t border-line pt-6 pb-9 flex justify-between gap-4 text-[13px] text-text-3 max-md:flex-col max-md:gap-2.5">
       <span>© 2026 Drew Butler</span>
       <span class="flex gap-5">
-        <a class="text-text-2 transition-colors duration-120 hover:text-text" href="#">GitHub</a>
-        <a class="text-text-2 transition-colors duration-120 hover:text-text" href="/feed.xml">RSS</a>
-        <a class="text-text-2 transition-colors duration-120 hover:text-text" href="#">Email</a>
+        <a class="text-text-2 transition-colors duration-120 hover:text-text" href="https://github.com/dbtlr" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="text-text-2 transition-colors duration-120 hover:text-text" href="mailto:hi@dbtlr.com">Email</a>
       </span>
     </div>
   </div>
