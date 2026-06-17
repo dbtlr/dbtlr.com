@@ -9,7 +9,7 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
   <div class="col">
     <section class="pt-22 pb-16 max-md:pt-13 max-md:pb-10">
       <h1 class="m-0 mb-5 text-[40px] leading-[1.18] font-semibold tracking-[-0.015em] max-md:text-3xl">I build tools for AI-native development.</h1>
-      <p class="m-0 text-[17px] leading-[1.65] text-text-2 max-w-[56ch] max-md:text-[15.5px]">
+      <p class="m-0 text-[17px] leading-[1.65] text-text-2 max-w-[64ch] max-md:text-[15.5px]">
         I’m Drew Butler — a product-focused engineer and engineering leader, twenty years in and still
         shipping code every day. Lately that means open-source tooling for agentic development —
         <a class="text-accent-cool border-b border-transparent hover:border-cool-dim" href="/projects/norn/">norn</a>, <a class="text-accent-cool border-b border-transparent hover:border-cool-dim" href="/projects/mimir/">mimir</a>,
@@ -21,10 +21,12 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
 
     <SectionHead label="Selected projects" href="/projects/" linkText="All projects →" />
     {projects.map((project) => (
-      <a class="group flex items-baseline gap-3.5 py-4 border-b border-line max-md:flex-wrap max-md:gap-y-1" href={`/projects/${project.id}/`}>
+      <a class="group grid grid-cols-[96px_1fr] gap-3.5 items-baseline py-4 border-b border-line max-md:grid-cols-1 max-md:gap-y-1" href={`/projects/${project.id}/`}>
         <b class="text-base font-semibold transition-colors duration-120 group-hover:text-accent-cool">{project.data.name}</b>
-        <span class="text-sm text-text-2">{project.data.blurb}</span>
-        <em class="ml-auto not-italic font-mono text-[11.5px] text-accent-warm shrink-0 max-md:ml-0 max-md:w-full">{project.data.lang}</em>
+        <span>
+          <span class="block text-sm text-text-2">{project.data.blurb}</span>
+          <em class="block not-italic font-mono text-[11.5px] text-accent-warm mt-1.5">{project.data.lang}</em>
+        </span>
       </a>
     ))}
   </div>

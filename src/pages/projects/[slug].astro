@@ -18,8 +18,8 @@ const buttons = [
 ---
 <Base title={`${project.data.name} — Drew Butler`} description={project.data.blurb} current="projects">
   <div class="col">
-    <section class="pt-18 max-md:pt-12">
-      <div class="flex gap-3 items-center mt-14 text-[13px]">
+    <section class="pt-12">
+      <div class="flex gap-3 items-center text-[13px]">
         <a class="text-accent-cool" href="/projects/">← Projects</a>
       </div>
       <div class="flex items-baseline gap-3.5 flex-wrap mt-4.5">
@@ -50,7 +50,7 @@ const buttons = [
 
     <dl class="grid grid-cols-3 gap-px bg-line border-y border-line my-10 max-md:grid-cols-1">
       {project.data.facts.map((fact) => (
-        <div class="bg-bg py-4.5 pr-5 max-md:py-3.5 max-md:pr-0">
+        <div class="bg-bg py-4.5 px-2 max-md:py-3.5 max-md:px-0">
           <dt class="text-[11.5px] tracking-[0.08em] uppercase text-text-3 m-0 mb-1.5">{fact.label}</dt>
           <dd class:list={['m-0', fact.mono ? 'font-mono text-[13px] text-text' : 'text-[15px] text-text font-medium']}>{fact.value}</dd>
         </div>
