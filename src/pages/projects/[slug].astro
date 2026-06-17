@@ -40,9 +40,13 @@ const buttons = [
       )}
     </section>
 
-    <div class="mt-10">
-      <div class="ph h-95 max-md:h-50"><span>{project.data.shotLabel}</span></div>
-    </div>
+    <figure class="code mt-10">
+      <div class="code-bar">
+        <span class="code-file">terminal</span>
+        <span class="code-lang">shell</span>
+      </div>
+      <pre>{project.data.demo}</pre>
+    </figure>
 
     <dl class="grid grid-cols-3 gap-px bg-line border-y border-line my-10 max-md:grid-cols-1">
       {project.data.facts.map((fact) => (

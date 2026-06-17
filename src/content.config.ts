@@ -40,8 +40,7 @@ const projects = defineCollection({
         mono: z.boolean().optional(),
       })
     ),
-    thumbLabel: z.string(),
-    shotLabel: z.string(),
+    demo: z.string(),
   }),
 });
 
