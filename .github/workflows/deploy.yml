@@ -1,14 +1,14 @@
 name: Deploy
 
-# Push to main -> production Worker `dbtlr-com` (serves dbtlr.com once the custom domain is attached).
-# Push to v2   -> staging Worker `dbtlr-com-v2` on workers.dev.
+# Push to main -> production Worker `dbtlr-com` (serves dbtlr.com).
+# PR previews live in preview.yml.
 on:
   push:
-    branches: [main, v2]
+    branches: [main]
   workflow_dispatch:
 
 concurrency:
-  group: deploy-${{ github.ref_name }}
+  group: deploy-main
   cancel-in-progress: true
 
 jobs:
@@ -28,4 +28,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: ${{ github.ref_name == 'main' && 'deploy' || 'deploy --name dbtlr-com-v2' }}
+          command: deploy
