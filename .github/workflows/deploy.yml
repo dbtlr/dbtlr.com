@@ -1,18 +1,18 @@
 name: Deploy
 
-# v2 (staging): every push deploys to the dbtlr-com-v2 Worker on workers.dev.
-# Production (main -> dbtlr.com) is added at cutover — see Mimir DBTL-8.
+# Push to main -> production Worker `dbtlr-com` (serves dbtlr.com once the custom domain is attached).
+# Push to v2   -> staging Worker `dbtlr-com-v2` on workers.dev.
 on:
   push:
-    branches: [v2]
+    branches: [main, v2]
   workflow_dispatch:
 
 concurrency:
-  group: deploy-v2
+  group: deploy-${{ github.ref_name }}
   cancel-in-progress: true
 
 jobs:
-  staging:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -28,4 +28,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy --name dbtlr-com-v2
+          command: ${{ github.ref_name == 'main' && 'deploy' || 'deploy --name dbtlr-com-v2' }}
