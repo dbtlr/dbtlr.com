@@ -10,14 +10,17 @@ const posts = (await getCollection('writing'))
   .slice(0, 4);
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 ---
-<Base title="dbtlr.com" description="Software, written down. Writing and projects on distributed systems, developer tools, and keeping software simple.">
+<Base title="dbtlr.com" description="Drew Butler — a product-focused engineer and engineering leader building open-source tooling for agentic, AI-native development.">
   <div class="col">
     <section class="pt-22 pb-16 max-md:pt-13 max-md:pb-10">
-      <h1 class="m-0 mb-5 text-[40px] leading-[1.18] font-semibold tracking-[-0.015em] max-md:text-3xl">Software, written down.</h1>
+      <h1 class="m-0 mb-5 text-[40px] leading-[1.18] font-semibold tracking-[-0.015em] max-md:text-3xl">I build tools for AI-native development.</h1>
       <p class="m-0 text-[17px] leading-[1.65] text-text-2 max-w-[56ch] max-md:text-[15.5px]">
-        I’m a software engineer who builds developer tools and writes about distributed systems, data
-        plumbing, and the craft of keeping software simple. Currently building
-        <a class="text-accent-cool border-b border-transparent hover:border-cool-dim" href="/projects/relaymesh/">relaymesh</a>.
+        I’m Drew Butler — a product-focused engineer and engineering leader, twenty years in and still
+        shipping code every day. Lately that means open-source tooling for agentic development —
+        <b class="font-medium text-text">norn</b>, <b class="font-medium text-text">mimir</b>,
+        <b class="font-medium text-text">saga</b>, <b class="font-medium text-text">skald</b> — all named
+        from Norse myth, because every side project deserves a pantheon. I write about what I learn
+        building it. Based in Brooklyn.
       </p>
     </section>
 
