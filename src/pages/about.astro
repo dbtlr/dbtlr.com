@@ -8,9 +8,9 @@ const now = [
   { label: 'Reading', value: '“A Philosophy of Software Design”, again, slowly' },
 ];
 const elsewhere = [
-  { label: 'GitHub', value: 'github.com/dbtlr' },
-  { label: 'Email', value: 'hi@dbtlr.com' },
-  { label: 'RSS', value: 'dbtlr.com/feed.xml' },
+  { label: 'GitHub', value: 'github.com/dbtlr', href: 'https://github.com/dbtlr', external: true },
+  { label: 'Email', value: 'hi@dbtlr.com', href: 'mailto:hi@dbtlr.com', external: false },
+  { label: 'RSS', value: 'dbtlr.com/feed.xml', href: '/feed.xml', external: true },
 ];
 ---
 <Base title="About — Drew Butler" description="Software engineer building small self-hosted tools and writing about what breaks along the way." current="about">
@@ -42,9 +42,14 @@ const elsewhere = [
       <SectionHead label="Elsewhere" />
       <div class="flex flex-col">
         {elsewhere.map((row) => (
-          <div class="flex gap-4 py-3.5 border-b border-line text-[15px]">
-            <b class="font-semibold min-w-30">{row.label}</b><span class="text-text-2">{row.value}</span>
-          </div>
+          <a
+            class="group flex gap-4 py-3.5 border-b border-line text-[15px]"
+            href={row.href}
+            target={row.external ? '_blank' : undefined}
+            rel={row.external ? 'noopener noreferrer' : undefined}
+          >
+            <b class="font-semibold min-w-30">{row.label}</b><span class="text-text-2 transition-colors duration-120 group-hover:text-accent-cool">{row.value}</span>
+          </a>
         ))}
       </div>
     </section>
