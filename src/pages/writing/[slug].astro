@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 const { post, prev, next } = Astro.props;
 const { Content } = await render(post);
 ---
-<Base title={`${post.data.title} — dbtlr.com`} description={post.data.blurb} current="writing">
+<Base title={`${post.data.title} — Drew Butler`} description={post.data.blurb} current="writing">
   <div class="col col-narrow">
     <article>
       <div class="flex gap-3 items-center mt-20 mb-4.5 text-[13px] max-md:mt-12 max-md:flex-wrap">

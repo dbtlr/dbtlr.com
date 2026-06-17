@@ -10,7 +10,7 @@ const posts = (await getCollection('writing'))
   .slice(0, 4);
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 ---
-<Base title="dbtlr.com" description="Drew Butler — a product-focused engineer and engineering leader building open-source tooling for agentic, AI-native development.">
+<Base title="Drew Butler" description="Drew Butler — a product-focused engineer and engineering leader building open-source tooling for agentic, AI-native development.">
   <div class="col">
     <section class="pt-22 pb-16 max-md:pt-13 max-md:pb-10">
       <h1 class="m-0 mb-5 text-[40px] leading-[1.18] font-semibold tracking-[-0.015em] max-md:text-3xl">I build tools for AI-native development.</h1>

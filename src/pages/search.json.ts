@@ -24,10 +24,10 @@ export const GET: APIRoute = async () => {
       sub: `${p.data.lang} · ${p.data.short}`,
       href: `/projects/${p.id}/`,
     })),
-    { type: 'page', title: 'Home', sub: 'dbtlr.com', href: '/' },
+    { type: 'page', title: 'Home', sub: 'Drew Butler', href: '/' },
     { type: 'page', title: 'Writing', sub: 'all posts', href: '/writing/' },
     { type: 'page', title: 'Projects', sub: 'all projects', href: '/projects/' },
-    { type: 'page', title: 'About', sub: 'who is dbtlr', href: '/about/' },
+    { type: 'page', title: 'About', sub: 'who is Drew', href: '/about/' },
   ];
 
   return new Response(JSON.stringify(items), {

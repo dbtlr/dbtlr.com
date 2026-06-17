@@ -7,7 +7,7 @@ export async function GET(context: APIContext) {
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
   );
   return rss({
-    title: 'dbtlr.com — Writing',
+    title: 'Drew Butler — Writing',
     description: 'Notes on distributed systems, developer tools, and keeping software simple.',
     site: context.site!,
     items: posts.map((post) => ({

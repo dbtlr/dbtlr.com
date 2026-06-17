@@ -4,7 +4,7 @@ import Base from '../../layouts/Base.astro';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 ---
-<Base title="Projects — dbtlr.com" description="Tools I build and maintain — mostly small, sharp, and self-hosted." current="projects">
+<Base title="Projects — Drew Butler" description="Tools I build and maintain — mostly small, sharp, and self-hosted." current="projects">
   <div class="col">
     <section class="pt-18 pb-10 max-md:pt-12">
       <h1 class="m-0 mb-3.5 text-[34px] font-semibold tracking-[-0.015em] max-md:text-[28px]">Projects</h1>
