@@ -1,0 +1,10 @@
+{
+  // Static-assets Worker for dbtlr.com (no adapter needed — Astro emits static files).
+  // Production deploys as "dbtlr-com"; the v2 branch overrides the name to
+  // "dbtlr-com-v2" at deploy time (see .github/workflows/deploy.yml).
+  "name": "dbtlr-com",
+  "compatibility_date": "2026-06-16",
+  "assets": {
+    "directory": "./dist"
+  }
+}
