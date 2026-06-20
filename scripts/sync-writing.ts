@@ -367,6 +367,9 @@ async function listMarkdownFiles(dir: string): Promise<string[]> {
   const entries = await readdir(dir, { withFileTypes: true });
   const files = await Promise.all(
     entries.map(async (entry) => {
+      if (entry.name.startsWith('_')) {
+        return [];
+      }
       const fullPath = path.join(dir, entry.name);
       if (entry.isDirectory()) {
         return listMarkdownFiles(fullPath);
