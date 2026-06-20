@@ -23,6 +23,41 @@ pnpm preview    # serve the built ./dist locally
 pnpm check      # astro check (type checking)
 ```
 
+## Writing sync
+
+Blog posts are authored outside the repository and synced into Astro's generated
+content collection. Configure the local source folder in an uncommitted `.env` file:
+
+```sh
+DBTLR_WRITING_SOURCE_DIR=/absolute/path/to/local/writing/folder
+```
+
+Source articles are Markdown files with frontmatter:
+
+```yaml
+title: "Article title"
+blurb: "Short description for listings and RSS"
+lede: "Optional article-page intro"
+date: 2026-06-20
+tag: "systems"
+status: published
+slug: optional-manual-slug
+```
+
+Only `status: published` files are synced; drafts, stubs, and missing statuses are
+skipped. The sync command writes generated Markdown to `src/content/writing/` and
+tracks stable source-to-slug mappings in `src/content/writing/.sync-manifest.json`.
+
+```sh
+pnpm sync:writing -- --dry-run   # preview create/update/stale/delete candidates
+pnpm sync:writing                # create/update published articles
+pnpm sync:writing -- --prune     # remove generated articles whose source is gone or unpublished
+```
+
+Slugs are derived from `slug` when present, otherwise from `title` on first publish.
+After that, the manifest preserves the published URL unless an explicit slug change
+is synced with `--rename-slugs`.
+
 ## Workflow
 
 Work happens on feature branches and lands through pull requests:

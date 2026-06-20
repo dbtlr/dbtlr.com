@@ -6,8 +6,15 @@ import { getCollection } from 'astro:content';
 // by type transitions.
 export const GET: APIRoute = async () => {
   const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+  const posts = (await getCollection('writing')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
   const items = [
+    ...posts.map((p) => ({
+      type: 'post',
+      title: p.data.title,
+      sub: `${p.data.tag} · ${p.data.blurb}`,
+      href: `/writing/${p.id}/`,
+    })),
     ...projects.map((p) => ({
       type: 'project',
       title: p.data.name,
