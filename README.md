@@ -45,7 +45,9 @@ slug: optional-manual-slug
 ```
 
 Only `status: published` files are synced; drafts, stubs, and missing statuses are
-skipped. The sync command writes generated Markdown to `src/content/writing/` and
+skipped. Files and directories whose names start with `_` are ignored entirely, so
+vault-side templates, notes, and publishing process folders can live beside article
+sources. The sync command writes generated Markdown to `src/content/writing/` and
 tracks stable source-to-slug mappings in `src/content/writing/.sync-manifest.json`.
 
 ```sh
