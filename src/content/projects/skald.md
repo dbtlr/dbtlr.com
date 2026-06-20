@@ -29,7 +29,7 @@ demo: |
 
 ## Why it exists
 
-Writing good commit messages and pull-request descriptions is a repetitive context-switch that breaks flow. skald automates the prose: it reads your staged diff — and for PRs, your branch diff and commit history — and drafts the message, so you stay focused on the code. It's the one tool in the family that isn't about knowledge or work state; it just composes, which is what a skald, the Norse court poet, did.
+Writing good commit messages and pull-request descriptions is a repetitive context-switch that breaks flow. skald automates the prose: it reads your staged diff — and for PRs, your branch diff and commit history — and drafts the message, so you stay focused on the code. It is intentionally narrower than the rest: a tool for composition, which is what a skald, the Norse court poet, did.
 
 ## What it does
 
