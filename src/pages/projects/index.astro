@@ -4,11 +4,11 @@ import Base from '../../layouts/Base.astro';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 ---
-<Base title="Projects — Drew Butler" description="A Norse-named family of terminal tools for agentic development — norn (knowledge), mimir (work), saga (orchestration), and skald, an AI git CLI." current="projects">
+<Base title="Projects — Drew Butler" description="Open-source tools for AI-native development: deterministic vault tooling, local work-state tracking, agent memory, and AI-assisted git prose." current="projects">
   <div class="col">
     <section class="pt-12 pb-10">
       <h1 class="m-0 mb-3.5 text-[34px] font-semibold tracking-[-0.015em] max-md:text-[28px]">Projects</h1>
-      <p class="m-0 text-base leading-[1.6] text-text-2">A Norse-named family of terminal tools for agentic development. <b class="text-text font-medium">norn</b> keeps knowledge, <b class="text-text font-medium">mimir</b> holds work, <b class="text-text font-medium">saga</b> weaves them into a session — and <b class="text-text font-medium">skald</b> writes your git prose. Open-source, built in the open.</p>
+      <p class="m-0 text-base leading-[1.6] text-text-2">Open-source tools for AI-native development. <b class="text-text font-medium">norn</b> makes Markdown vaults queryable, <b class="text-text font-medium">mimir</b> tracks local work state, <b class="text-text font-medium">saga</b> provides agent memory, and <b class="text-text font-medium">skald</b> writes git prose. Built in the open, as separate stories.</p>
     </section>
 
     {projects.map((project) => (

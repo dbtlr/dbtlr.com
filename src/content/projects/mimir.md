@@ -30,7 +30,7 @@ demo: |
 
 Task state is ephemeral and fast-changing, but a Markdown vault is optimized for durable, slow-changing knowledge. Storing work state as notes makes convention the only enforcement layer — and convention always decays: statuses drift, stale tasks pile up, rollups get hand-maintained. mimir moves work state into a structured SQLite store so the substrate fits the job. Markdown becomes a projection, not the source.
 
-It's the *work* half of a split with [norn](/projects/norn/) (knowledge) and [saga](/projects/saga/) (orchestration).
+mimir exists because work state changes faster than knowledge. It keeps tasks, blockers, rank, and history in a structured local store, while Markdown remains a projection for humans.
 
 ## What it does
 

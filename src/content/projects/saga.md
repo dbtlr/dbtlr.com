@@ -1,44 +1,47 @@
 ---
 name: saga
-blurb: The orchestration layer for agentic coding — threads a body of work into one coherent session.
-description: A Claude Code (and cross-harness) plugin of skills that runs a coherent working session — the narrative layer threading work into one through-line, from session start to session log.
-short: session orchestration
-lang: Claude Code plugin
+blurb: Agent memory for coding sessions — carries profile, shared memory, and workspace context across runs.
+description: A memory provider for coding agents that assembles session context, preserves continuity across fresh runs, and turns finished work into durable workspace memory.
+short: agent memory
+lang: Agent memory
 status: early
 version: v0.1
 license: MIT
 order: 3
-tagline: The narrative layer for agentic coding. A saga is the story that sequences events; saga the tool does the same for work — weaving a knowledge tool and a work tool into one continuous session that survives compactions and fresh context windows.
+tagline: "Coding agents need more than a prompt. saga provides the memory layer: user profile, shared operating knowledge, workspace context, and session records that survive compactions, fresh windows, and long-running work."
 links:
   github: https://github.com/dbtlr/saga
 facts:
   - label: Type
-    value: Claude Code plugin
+    value: Memory provider
   - label: Harnesses
     value: Claude Code + Codex
-  - label: Skills
-    value: "5"
+  - label: Scope
+    value: User · shared · workspace
 demo: |
-  # in Claude Code
-  /plugin marketplace add dbtlr/saga
-  /saga:start-session        # assemble the primer, route the work
-  /saga:write-session-log    # memorialize decisions at a boundary
+  Session start
+  ├─ User Profile
+  ├─ Shared Memory
+  └─ Workspace Brief
+
+  Work boundary
+  └─ Session Log → durable memory
 ---
 
 ## Why it exists
 
-Agentic coding sessions lose their through-line. Work spans more than one context window, and detail evaporates across compactions and fresh windows. saga is the orchestration layer that strings a body of work into one coherent session — owning neither knowledge nor work itself, but threading the two domain tools beneath it: [norn](/projects/norn/) for knowledge, [mimir](/projects/mimir/) for work.
+Agentic coding sessions lose their through-line. Work spans more than one context window, and detail evaporates across compactions, restarts, and fresh runs. saga exists to make memory explicit: what the agent should know about the user, what it should carry across projects, what matters in this workspace, and what was learned from the work that just finished.
 
-It came out of a restart. An earlier single-tool design got bent when task-workflow concerns invaded the decision space — so orchestration was split out into its own layer.
+It came out of a restart. The first shape put too much of the story on commands and workflows. The durable need was simpler: a provider for the context a coding agent needs before it starts, and a path for completed work to become maintained memory instead of buried transcript.
 
 ## What it does
 
-- **start-session** — assembles the session primer (user profile + shared memory + workspace brief) and routes the work; reloads on each resumption to hold the through-line.
-- **grill-me** — Socratic interrogation that pressure-tests a plan against the workspace's glossary and recorded decisions.
-- **write-session-log** — at a work boundary, writes the merged log of decisions, deviations, and consolidation candidates.
-- **consolidate-sessions** — lifts durable lessons out of frozen logs into maintained context.
-- **initialize-saga** — binds a project to a vault workspace and scaffolds or self-heals it.
+- **Assembles active context** — user profile, shared memory, and workspace brief arrive before the agent starts making choices.
+- **Keeps workspace language live** — glossary and decisions stay available as constraints, not archive files the agent forgets to check.
+- **Records work boundaries** — session logs capture decisions, deviations, and consolidation candidates when a body of work finishes.
+- **Promotes durable lessons** — repeated or important lessons move out of logs and into maintained memory.
+- **Separates memory from procedure** — durable facts live as memory; commands and workflows stay in the harness.
 
 ## The session log is the record
 
-saga deletes a category. Specs and plans are transient review surfaces, discarded on merge; the one durable retrospective is the session log — itself prunable once its lessons are lifted out. The test for keeping anything is blunt: would it matter if this were deleted? It's also the test the whole tool family passes — state your purpose without an "and." norn keeps knowledge. mimir holds work. saga weaves them into a session.
+saga deletes a category. Specs and plans are transient review surfaces, discarded on merge; the durable retrospective is the session log — itself prunable once its lessons are lifted out. The test for keeping anything is blunt: would it matter if this were deleted? That is the memory-provider line: keep the facts that change future work, and let the rest disappear.
