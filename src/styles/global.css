@@ -52,7 +52,7 @@
   .body a { @apply text-accent-cool border-b border-cool-dim hover:border-accent-cool; }
   .body h2 { @apply text-2xl font-[650] tracking-[-0.01em] mt-10 mb-4 max-md:text-[21px]; }
   .body > h2:first-child { @apply mt-0; }
-  .body ul { @apply m-0 mb-6 pl-5.5; }
+  .body ul { @apply list-disc m-0 mb-6 pl-5.5; }
   .body li { @apply text-base leading-[1.7] text-text-2 my-1.5; }
   .body li::marker { color: var(--color-accent-warm); }
 

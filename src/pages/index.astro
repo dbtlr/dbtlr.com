@@ -3,25 +3,27 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import SectionHead from '../components/SectionHead.astro';
 
-const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const projects = (await getCollection('projects', ({ data }) => data.status !== 'retired')).sort((a, b) => a.data.order - b.data.order).slice(0, 3);
 ---
-<Base title="Drew Butler" description="Drew Butler — a product-focused engineer and engineering leader building open-source tooling for agentic, AI-native development.">
+<Base title="Drew Butler" description="Drew Butler, a product-focused engineer and engineering leader building open-source tooling for agentic, AI-native development.">
   <div class="col">
     <section class="pt-22 pb-16 max-md:pt-13 max-md:pb-10">
       <h1 class="m-0 mb-5 text-[40px] leading-[1.18] font-semibold tracking-[-0.015em] max-md:text-3xl">I build tools for AI-native development.</h1>
+      <p class="m-0 mb-5 text-[17px] leading-[1.65] text-text-2 max-md:text-[15.5px]">
+        I’m Drew Butler, a product-focused engineer and engineering leader based in Brooklyn. I like working close to a problem: understanding what people need, figuring out what matters, and building something useful.
+      </p>
       <p class="m-0 text-[17px] leading-[1.65] text-text-2 max-md:text-[15.5px]">
-        I’m Drew Butler — a product-focused engineer and engineering leader, twenty years in and still
-        shipping code every day. Lately that means open-source tooling for AI-native development:
-        <a class="text-accent-cool border-b border-transparent hover:border-cool-dim" href="/projects/norn/">norn</a> for Markdown vaults, <a class="text-accent-cool border-b border-transparent hover:border-cool-dim" href="/projects/mimir/">mimir</a> for local work state,
-        <a class="text-accent-cool border-b border-transparent hover:border-cool-dim" href="/projects/saga/">saga</a> for agent memory, and <a class="text-accent-cool border-b border-transparent hover:border-cool-dim" href="/projects/skald/">skald</a> for git prose. The names lean Norse;
-        the tools solve separate problems. I write about what I learn building them. Based in Brooklyn.
+        The way we build software is changing. Developers are no longer the only users of our tools. Agents are becoming users too. That affects how we design interfaces, workflows, documentation, and developer tools. I spend a lot of my time in TypeScript, building with agents, and creating open-source tools that help both people and agents get more done.
       </p>
     </section>
 
     <SectionHead label="Selected projects" href="/projects/" linkText="All projects →" />
     {projects.map((project) => (
-      <a class="group grid grid-cols-[96px_1fr] gap-3.5 items-baseline py-4 border-b border-line max-md:grid-cols-1 max-md:gap-y-1" href={`/projects/${project.id}/`}>
-        <b class="text-base font-semibold transition-colors duration-120 group-hover:text-accent-cool">{project.data.name}</b>
+      <a class="group grid grid-cols-[132px_1fr] gap-3.5 items-start py-4 border-b border-line max-md:grid-cols-1 max-md:gap-y-1" href={`/projects/${project.id}/`}>
+        <b class="inline-flex items-center gap-2 text-base font-semibold transition-colors duration-120 group-hover:text-accent-cool">
+          {project.data.icon && <img src={project.data.icon} width="24" height="24" alt="" class="shrink-0" />}
+          {project.data.name}
+        </b>
         <span>
           <span class="block text-sm text-text-2">{project.data.blurb}</span>
           <em class="block not-italic font-mono text-[11.5px] text-accent-warm mt-1.5">{project.data.lang}</em>

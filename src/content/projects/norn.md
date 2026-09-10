@@ -1,15 +1,16 @@
 ---
 name: norn
+icon: /projects/norn.svg
 blurb: Your Markdown vault as a deterministic graph — query, validate, and repair from the shell.
 description: A Rust CLI and MCP server that turns a Markdown vault into a deterministic graph you can query, validate, and repair — for shells, scripts, and coding agents.
 short: vault tooling
 lang: Rust
 status: active
-version: v0.38
 license: MIT
 order: 1
 tagline: Obsidian gives you a GUI over your Markdown vault. norn gives you the same vault as a deterministic graph — one humans and agents can both query, validate, and repair from the command line.
 links:
+  releases: https://github.com/dbtlr/norn/releases
   github: https://github.com/dbtlr/norn
   changelog: https://github.com/dbtlr/norn/blob/main/CHANGELOG.md
 facts:
@@ -43,3 +44,7 @@ The thesis is a chain — rules make the vault consistent, consistency makes que
 ## Plan, then apply
 
 Mutation is never a black box. norn produces a schema-versioned, inspectable repair plan and only changes files when you apply it. The division of labor is deliberate: the agent decides, norn enumerates. No model sits in the loop rewriting prose — which is exactly what makes the result predictable enough to trust.
+
+## Current development
+
+The released tool is available from the [norn repository](https://github.com/dbtlr/norn). The next implementation is under development in [norn-next](https://github.com/dbtlr/norn-next) and has no releases yet.

@@ -1,3 +1,7 @@
+---
+description: "Development, content authoring, and deployment workflow for dbtlr.com."
+---
+
 # dbtlr.com
 
 Personal site for [dbtlr.com](https://dbtlr.com) — a calm, typography-led dark-mode
@@ -69,11 +73,13 @@ feature branch  →  PR to main  →  preview deploy  →  merge to main  →  p
 ```
 
 - **PR previews** (`.github/workflows/preview.yml`): every PR against `main` runs
-  `pnpm check` + `pnpm build`, then `wrangler versions upload` publishes an ephemeral
+  `pnpm check`, `pnpm build`, and `pnpm check:projects`. Then
+  `wrangler versions upload` publishes an ephemeral
   version of the `dbtlr-com` Worker **without** touching production. The preview URL is
   posted (and kept updated) as a comment on the PR.
-- **Production** (`.github/workflows/deploy.yml`): pushing to `main` runs the same
-  checks and `wrangler deploy`, publishing the `dbtlr-com` Worker that serves
+- **Production** (`.github/workflows/deploy.yml`): pushing to `main` runs
+  `pnpm check` and `pnpm build`. Then `wrangler deploy` publishes the
+  `dbtlr-com` Worker that serves
   [dbtlr.com](https://dbtlr.com).
 
 Both workflows use Node 24 + pnpm and require `CLOUDFLARE_API_TOKEN` and
@@ -81,11 +87,14 @@ Both workflows use Node 24 + pnpm and require `CLOUDFLARE_API_TOKEN` and
 
 ## Checks
 
-Run before pushing — these are exactly what CI runs:
+Run before pushing:
 
 ```sh
-pnpm check && pnpm build
+pnpm check && pnpm build && pnpm check:projects
 ```
+
+The project check inspects built pages and search. It verifies the current roster,
+the retained Saga retirement page, and the removal of fixed version badges.
 
 ## Project structure
 

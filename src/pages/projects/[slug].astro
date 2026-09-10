@@ -9,21 +9,25 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
-const meta = [project.data.lang, project.data.version, project.data.license].filter(Boolean).join(' · ');
+const meta = [project.data.status === 'retired' ? 'Retired' : project.data.status, project.data.lang, project.data.license].filter(Boolean).join(' · ');
 const buttons = [
   { href: project.data.links?.github, label: 'View on GitHub', primary: true },
   { href: project.data.links?.docs, label: 'Documentation', primary: false },
   { href: project.data.links?.changelog, label: 'Changelog', primary: false },
+  { href: project.data.links?.releases, label: 'Releases', primary: false },
 ].filter((b) => b.href);
 ---
-<Base title={`${project.data.name} — Drew Butler`} description={project.data.blurb} current="projects">
+<Base title={`${project.data.name} | Drew Butler`} description={project.data.blurb} current="projects">
   <div class="col">
     <section class="pt-12">
       <div class="flex gap-3 items-center text-[13px]">
         <a class="text-accent-cool" href="/projects/">← Projects</a>
       </div>
       <div class="flex items-baseline gap-3.5 flex-wrap mt-4.5">
-        <h1 class="m-0 text-[38px] font-[650] tracking-[-0.02em] max-md:text-3xl">{project.data.name}</h1>
+        <h1 class="flex items-center gap-3 m-0 text-[38px] font-[650] tracking-[-0.02em] max-md:text-3xl">
+          {project.data.icon && <img src={project.data.icon} width="40" height="40" alt="" class="shrink-0" />}
+          {project.data.name}
+        </h1>
         <span class="font-mono text-xs text-accent-warm">{meta}</span>
       </div>
       <p class="m-0 mt-3 text-[17px] leading-[1.6] text-text-2">{project.data.tagline}</p>
@@ -40,24 +44,28 @@ const buttons = [
       )}
     </section>
 
-    <figure class="code mt-10">
-      <div class="code-bar">
-        <span class="code-file">terminal</span>
-        <span class="code-lang">shell</span>
-      </div>
-      <pre>{project.data.demo}</pre>
-    </figure>
+    {project.data.status !== 'retired' && (
+      <>
+        <figure class="code mt-10">
+          <div class="code-bar">
+            <span class="code-file">terminal</span>
+            <span class="code-lang">shell</span>
+          </div>
+          <pre>{project.data.demo}</pre>
+        </figure>
 
-    <dl class="grid grid-cols-3 gap-px bg-line border-y border-line my-10 max-md:grid-cols-1">
-      {project.data.facts.map((fact) => (
-        <div class="bg-bg py-4.5 px-2 max-md:py-3.5 max-md:px-0">
-          <dt class="text-[11.5px] tracking-[0.08em] uppercase text-text-3 m-0 mb-1.5">{fact.label}</dt>
-          <dd class:list={['m-0', fact.mono ? 'font-mono text-[13px] text-text' : 'text-[15px] text-text font-medium']}>{fact.value}</dd>
-        </div>
-      ))}
-    </dl>
+        <dl class="grid grid-cols-3 gap-px bg-line border-y border-line my-10 max-md:grid-cols-1">
+          {project.data.facts.map((fact) => (
+            <div class="bg-bg py-4.5 px-2 max-md:py-3.5 max-md:px-0">
+              <dt class="text-[11.5px] tracking-[0.08em] uppercase text-text-3 m-0 mb-1.5">{fact.label}</dt>
+              <dd class:list={['m-0', fact.mono ? 'font-mono text-[13px] text-text' : 'text-[15px] text-text font-medium']}>{fact.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </>
+    )}
 
-    <article>
+    <article class:list={{ 'mt-10': project.data.status === 'retired' }}>
       <div class="body">
         <Content />
       </div>

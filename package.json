@@ -11,7 +11,8 @@
     "build": "astro build",
     "check": "astro check",
     "preview": "astro preview",
-    "sync:writing": "node scripts/sync-writing.ts"
+    "sync:writing": "node scripts/sync-writing.ts",
+    "check:projects": "node scripts/check-projects.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.18",

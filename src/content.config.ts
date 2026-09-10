@@ -21,8 +21,8 @@ const projects = defineCollection({
     description: z.string(),
     short: z.string(),
     lang: z.string(),
-    status: z.string(),
-    version: z.string(),
+    icon: z.string().optional(),
+    status: z.enum(['active', 'early', 'pre-alpha', 'retired']),
     license: z.string().optional(),
     order: z.number(),
     tagline: z.string(),
@@ -31,6 +31,7 @@ const projects = defineCollection({
         github: z.string().optional(),
         docs: z.string().optional(),
         changelog: z.string().optional(),
+        releases: z.string().optional(),
       })
       .optional(),
     facts: z.array(

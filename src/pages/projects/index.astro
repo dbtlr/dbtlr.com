@@ -2,13 +2,18 @@
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 
-const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const projects = (await getCollection('projects', ({ data }) => data.status !== 'retired')).sort((a, b) => a.data.order - b.data.order);
 ---
-<Base title="Projects — Drew Butler" description="Open-source tools for AI-native development: deterministic vault tooling, local work-state tracking, agent memory, and AI-assisted git prose." current="projects">
+<Base title="Projects | Drew Butler" description="Open-source tools that give people and agents predictable ways to work with software, with explicit rules, clear guardrails, and results you can inspect." current="projects">
   <div class="col">
     <section class="pt-12 pb-10">
       <h1 class="m-0 mb-3.5 text-[34px] font-semibold tracking-[-0.015em] max-md:text-[28px]">Projects</h1>
-      <p class="m-0 text-base leading-[1.6] text-text-2">Open-source tools for AI-native development. <b class="text-text font-medium">norn</b> makes Markdown vaults queryable, <b class="text-text font-medium">mimir</b> tracks local work state, <b class="text-text font-medium">saga</b> provides agent memory, and <b class="text-text font-medium">skald</b> writes git prose. Built in the open, as separate stories.</p>
+      <p class="m-0 mb-5 text-base leading-[1.6] text-text-2">
+        I build open-source tools that give people and agents predictable ways to work with software. They make rules explicit, provide clear guardrails, and produce results you can inspect and trust.
+      </p>
+      <p class="m-0 text-base leading-[1.6] text-text-2">
+        Good tools should be forgiving when you make a mistake, but structured enough to keep you on the right path. They should have an obvious lifecycle, sensible defaults, and clear boundaries, so the person or agent using them can focus on the problem instead of figuring out how to use the tool.
+      </p>
     </section>
 
     {projects.map((project) => (
@@ -17,11 +22,14 @@ const projects = (await getCollection('projects')).sort((a, b) => a.data.order -
           <pre class="m-0 font-mono text-[11px] leading-[1.6] text-text-2 whitespace-pre overflow-hidden">{project.data.demo}</pre>
         </div>
         <span>
-          <h3 class="m-0 mb-1.5 text-[19px] font-semibold tracking-[-0.01em] transition-colors duration-120 group-hover:text-accent-cool">{project.data.name}</h3>
+          <h3 class="flex items-center gap-2.5 m-0 mb-1.5 text-[19px] font-semibold tracking-[-0.01em] transition-colors duration-120 group-hover:text-accent-cool">
+            {project.data.icon && <img src={project.data.icon} width="28" height="28" alt="" class="shrink-0" />}
+            {project.data.name}
+          </h3>
           <p class="m-0 mb-2.5 text-[14.5px] leading-[1.55] text-text-2 max-w-[52ch]">{project.data.description}</p>
           <span class="flex gap-3.5 font-mono text-[11.5px]">
             <span class="text-accent-warm">{project.data.lang}</span>
-            <span class="text-text-3">{project.data.status} · {project.data.version}</span>
+            <span class="text-text-3">{project.data.status}</span>
           </span>
         </span>
       </a>
