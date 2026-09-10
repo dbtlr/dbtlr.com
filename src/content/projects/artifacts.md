@@ -1,5 +1,6 @@
 ---
 name: Artifacts
+icon: /projects/artifacts.svg
 blurb: Persistent links for agent-generated documents, images, and PDFs.
 description: An MCP server and web interface that turn agent-generated documents, images, and PDFs into persistent links. Unversioned pre-alpha software for trusted networks.
 short: share agent output

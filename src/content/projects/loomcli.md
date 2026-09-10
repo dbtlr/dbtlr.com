@@ -1,5 +1,6 @@
 ---
 name: Loom CLI
+icon: /projects/loomcli.ico
 blurb: A TypeScript framework for command applications, with typed arguments, options, and schema validation.
 description: A TypeScript framework for command applications with named commands, typed inputs, Standard Schema validation, and passthrough arguments.
 short: command framework

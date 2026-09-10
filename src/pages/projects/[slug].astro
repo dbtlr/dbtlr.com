@@ -24,7 +24,10 @@ const buttons = [
         <a class="text-accent-cool" href="/projects/">← Projects</a>
       </div>
       <div class="flex items-baseline gap-3.5 flex-wrap mt-4.5">
-        <h1 class="m-0 text-[38px] font-[650] tracking-[-0.02em] max-md:text-3xl">{project.data.name}</h1>
+        <h1 class="flex items-center gap-3 m-0 text-[38px] font-[650] tracking-[-0.02em] max-md:text-3xl">
+          {project.data.icon && <img src={project.data.icon} width="40" height="40" alt="" class="shrink-0" />}
+          {project.data.name}
+        </h1>
         <span class="font-mono text-xs text-accent-warm">{meta}</span>
       </div>
       <p class="m-0 mt-3 text-[17px] leading-[1.6] text-text-2">{project.data.tagline}</p>

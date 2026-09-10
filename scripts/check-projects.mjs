@@ -32,4 +32,16 @@ for (const slug of [...current, 'saga']) {
 const mimir = await read('projects/mimir/index.html');
 assert.match(mimir, /Markdown is the system of record/);
 assert.ok(!mimir.includes('SQLite'), 'Mimir must not describe the retired SQLite backend');
+
+for (const [slug, extension] of [['norn', 'svg'], ['mimir', 'svg'], ['loomcli', 'ico'], ['artifacts', 'svg']]) {
+  const icon = `/projects/${slug}.${extension}`;
+  for (const page of [`projects/${slug}/index.html`, 'projects/index.html',
+    ...(['norn', 'mimir', 'loomcli'].includes(slug) ? ['index.html'] : [])]) {
+    const html = await read(page);
+    assert.ok(html.includes(`src="${icon}"`), `${page} must display the ${slug} icon`);
+  }
+  const bytes = await readFile(new URL(icon.slice(1), root));
+  assert.ok(bytes.length > 0, `${icon} must be served locally`);
+}
+
 console.log('Built project pages and search satisfy the current/retired content contract.');

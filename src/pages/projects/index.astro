@@ -17,7 +17,10 @@ const projects = (await getCollection('projects', ({ data }) => data.status !== 
           <pre class="m-0 font-mono text-[11px] leading-[1.6] text-text-2 whitespace-pre overflow-hidden">{project.data.demo}</pre>
         </div>
         <span>
-          <h3 class="m-0 mb-1.5 text-[19px] font-semibold tracking-[-0.01em] transition-colors duration-120 group-hover:text-accent-cool">{project.data.name}</h3>
+          <h3 class="flex items-center gap-2.5 m-0 mb-1.5 text-[19px] font-semibold tracking-[-0.01em] transition-colors duration-120 group-hover:text-accent-cool">
+            {project.data.icon && <img src={project.data.icon} width="28" height="28" alt="" class="shrink-0" />}
+            {project.data.name}
+          </h3>
           <p class="m-0 mb-2.5 text-[14.5px] leading-[1.55] text-text-2 max-w-[52ch]">{project.data.description}</p>
           <span class="flex gap-3.5 font-mono text-[11.5px]">
             <span class="text-accent-warm">{project.data.lang}</span>

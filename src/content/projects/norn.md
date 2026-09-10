@@ -1,5 +1,6 @@
 ---
 name: norn
+icon: /projects/norn.svg
 blurb: Your Markdown vault as a deterministic graph — query, validate, and repair from the shell.
 description: A Rust CLI and MCP server that turns a Markdown vault into a deterministic graph you can query, validate, and repair — for shells, scripts, and coding agents.
 short: vault tooling

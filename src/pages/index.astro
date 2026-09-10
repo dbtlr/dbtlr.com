@@ -22,8 +22,11 @@ const projects = (await getCollection('projects', ({ data }) => data.status !== 
 
     <SectionHead label="Selected projects" href="/projects/" linkText="All projects →" />
     {projects.map((project) => (
-      <a class="group grid grid-cols-[96px_1fr] gap-3.5 items-baseline py-4 border-b border-line max-md:grid-cols-1 max-md:gap-y-1" href={`/projects/${project.id}/`}>
-        <b class="text-base font-semibold transition-colors duration-120 group-hover:text-accent-cool">{project.data.name}</b>
+      <a class="group grid grid-cols-[132px_1fr] gap-3.5 items-start py-4 border-b border-line max-md:grid-cols-1 max-md:gap-y-1" href={`/projects/${project.id}/`}>
+        <b class="inline-flex items-center gap-2 text-base font-semibold transition-colors duration-120 group-hover:text-accent-cool">
+          {project.data.icon && <img src={project.data.icon} width="24" height="24" alt="" class="shrink-0" />}
+          {project.data.name}
+        </b>
         <span>
           <span class="block text-sm text-text-2">{project.data.blurb}</span>
           <em class="block not-italic font-mono text-[11.5px] text-accent-warm mt-1.5">{project.data.lang}</em>

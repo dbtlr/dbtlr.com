@@ -1,5 +1,6 @@
 ---
 name: mimir
+icon: /projects/mimir.svg
 blurb: Local work state in a Norn-managed Markdown vault, with queues and status derived when queried.
 description: A local-first work-state engine over a Norn-managed, git-backed Markdown vault. The CLI, MCP server, HTTP API, and operator console share one work model.
 short: work state
