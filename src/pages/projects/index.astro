@@ -4,11 +4,16 @@ import Base from '../../layouts/Base.astro';
 
 const projects = (await getCollection('projects', ({ data }) => data.status !== 'retired')).sort((a, b) => a.data.order - b.data.order);
 ---
-<Base title="Projects | Drew Butler" description="Open-source tools for AI-native development: Markdown vaults, local work state, command applications, artifact sharing, and git workflows." current="projects">
+<Base title="Projects | Drew Butler" description="Open-source tools that give people and agents predictable ways to work with software, with explicit rules, clear guardrails, and results you can inspect." current="projects">
   <div class="col">
     <section class="pt-12 pb-10">
       <h1 class="m-0 mb-3.5 text-[34px] font-semibold tracking-[-0.015em] max-md:text-[28px]">Projects</h1>
-      <p class="m-0 text-base leading-[1.6] text-text-2">Open-source tools for AI-native development. <b class="text-text font-medium">norn</b> makes Markdown vaults queryable, <b class="text-text font-medium">mimir</b> tracks work state, <b class="text-text font-medium">Loom</b> brings a strongly typed foundation to human and agent-native CLIs, <b class="text-text font-medium">Artifacts</b> shares agent output, and <b class="text-text font-medium">skald</b> writes git prose.</p>
+      <p class="m-0 mb-5 text-base leading-[1.6] text-text-2">
+        I build open-source tools that give people and agents predictable ways to work with software. They make rules explicit, provide clear guardrails, and produce results you can inspect and trust.
+      </p>
+      <p class="m-0 text-base leading-[1.6] text-text-2">
+        Good tools should be forgiving when you make a mistake, but structured enough to keep you on the right path. They should have an obvious lifecycle, sensible defaults, and clear boundaries, so the person or agent using them can focus on the problem instead of figuring out how to use the tool.
+      </p>
     </section>
 
     {projects.map((project) => (
