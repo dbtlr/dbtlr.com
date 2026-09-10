@@ -3,18 +3,20 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import SectionHead from '../components/SectionHead.astro';
 
-const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const projects = (await getCollection('projects', ({ data }) => data.status !== 'retired')).sort((a, b) => a.data.order - b.data.order);
 ---
-<Base title="Drew Butler" description="Drew Butler — a product-focused engineer and engineering leader building open-source tooling for agentic, AI-native development.">
+<Base title="Drew Butler" description="Drew Butler, a product-focused engineer and engineering leader building open-source tooling for agentic, AI-native development.">
   <div class="col">
     <section class="pt-22 pb-16 max-md:pt-13 max-md:pb-10">
       <h1 class="m-0 mb-5 text-[40px] leading-[1.18] font-semibold tracking-[-0.015em] max-md:text-3xl">I build tools for AI-native development.</h1>
       <p class="m-0 text-[17px] leading-[1.65] text-text-2 max-md:text-[15.5px]">
-        I’m Drew Butler — a product-focused engineer and engineering leader, twenty years in and still
-        shipping code every day. Lately that means open-source tooling for AI-native development:
-        <a class="text-accent-cool border-b border-transparent hover:border-cool-dim" href="/projects/norn/">norn</a> for Markdown vaults, <a class="text-accent-cool border-b border-transparent hover:border-cool-dim" href="/projects/mimir/">mimir</a> for local work state,
-        <a class="text-accent-cool border-b border-transparent hover:border-cool-dim" href="/projects/saga/">saga</a> for agent memory, and <a class="text-accent-cool border-b border-transparent hover:border-cool-dim" href="/projects/skald/">skald</a> for git prose. The names lean Norse;
-        the tools solve separate problems. I write about what I learn building them. Based in Brooklyn.
+        I’m Drew Butler, a product-focused engineer and engineering leader. Twenty years in, I still ship code every day.
+        Lately I’m building open-source tools for AI-native development:
+        <a class="text-accent-cool border-b border-transparent hover:border-cool-dim" href="/projects/norn/">norn</a> for Markdown vaults,
+        <a class="text-accent-cool border-b border-transparent hover:border-cool-dim" href="/projects/mimir/">mimir</a> for work state,
+        <a class="text-accent-cool border-b border-transparent hover:border-cool-dim" href="/projects/loomcli/">Loom CLI</a> for command applications,
+        <a class="text-accent-cool border-b border-transparent hover:border-cool-dim" href="/projects/artifacts/">Artifacts</a> for sharing agent output,
+        and <a class="text-accent-cool border-b border-transparent hover:border-cool-dim" href="/projects/skald/">skald</a> for git prose. Based in Brooklyn.
       </p>
     </section>
 

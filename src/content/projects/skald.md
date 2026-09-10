@@ -5,11 +5,11 @@ description: An AI-powered git workflow CLI (sk) that generates commit messages,
 short: AI git CLI
 lang: Rust
 status: active
-version: v0.5
 license: MIT
-order: 4
+order: 5
 tagline: Stop writing commit messages by hand. skald reads your staged diff, offers a carousel of candidates, and drafts full PR titles and descriptions — so you stay in flow and let the tool handle the prose.
 links:
+  releases: https://github.com/dbtlr/skald/releases
   github: https://github.com/dbtlr/skald
   changelog: https://github.com/dbtlr/skald/blob/main/CHANGELOG.md
 facts:

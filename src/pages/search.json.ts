@@ -5,7 +5,7 @@ import { getCollection } from 'astro:content';
 // Order matters: the palette groups rows under Writing / Projects / Pages headers
 // by type transitions.
 export const GET: APIRoute = async () => {
-  const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+  const projects = (await getCollection('projects', ({ data }) => data.status !== 'retired')).sort((a, b) => a.data.order - b.data.order);
   const posts = (await getCollection('writing')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
   const items = [

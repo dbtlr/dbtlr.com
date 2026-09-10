@@ -1,45 +1,44 @@
 ---
 name: mimir
-blurb: Local-first work-state tracker — one query layer, four surfaces, SQLite as the source of truth.
-description: A local-first task and work-state tracker. SQLite is the source of truth; rollups and dependency predicates are derived live, never stored. One core, four surfaces.
-short: work tracker
+blurb: Local work state in a Norn-managed Markdown vault, with queues and status derived when queried.
+description: A local-first work-state engine over a Norn-managed, git-backed Markdown vault. The CLI, MCP server, HTTP API, and operator console share one work model.
+short: work state
 lang: TypeScript
 status: active
-version: v0.8
 license: MIT
 order: 2
-tagline: One core query layer over four surfaces — a CLI for humans, an MCP server for agents, an HTTP API, and a web console — all speaking the same verbs over a single SQLite store. Work state stays the source of truth, without a sync problem.
+tagline: Local work state, with the next action derived from the facts.
 links:
   github: https://github.com/dbtlr/mimir
   changelog: https://github.com/dbtlr/mimir/blob/main/CHANGELOG.md
+  releases: https://github.com/dbtlr/mimir/releases
 facts:
   - label: Surfaces
     value: CLI · MCP · HTTP · console
   - label: Store
-    value: SQLite, rollups derived
+    value: Norn-managed Markdown
   - label: Scope
     value: Single operator
 demo: |
-  curl -fsSL https://raw.githubusercontent.com/dbtlr/mimir/main/install.sh | sh
-  mimir next                       # ready tasks, in rank order
-  mimir create task "wire the API" --parent MMR-2 --priority p1
-  mimir start MMR-3 && mimir done MMR-3
+  mimir overview     # current direction and active work
+  mimir next         # ready tasks, in rank order
+  mimir list         # the live work queue
 ---
+
+Mimir keeps projects, tasks, dependencies, decisions, and work products in a Norn-managed, git-backed Markdown vault. The CLI, MCP server, HTTP API, and operator console share the same work model.
 
 ## Why it exists
 
-Task state is ephemeral and fast-changing, but a Markdown vault is optimized for durable, slow-changing knowledge. Storing work state as notes makes convention the only enforcement layer — and convention always decays: statuses drift, stale tasks pile up, rollups get hand-maintained. mimir moves work state into a structured SQLite store so the substrate fits the job. Markdown becomes a projection, not the source.
-
-mimir exists because work state changes faster than knowledge. It keeps tasks, blockers, rank, and history in a structured local store, while Markdown remains a projection for humans.
+Long-running work needs a reliable answer to what is active, what is blocked, and what comes next. Mimir gives those questions a structured model while keeping the underlying records inspectable as Markdown.
 
 ## What it does
 
-- **Models work as a tree** — project → initiative → phase → task — with two status axes per task: a lifecycle and a hold overlay.
-- **Derives, never stores** — `ready`, `blocked`, `stale`, and every rollup are computed live, so there's no cache to fall out of sync.
-- **One query surface, composable** — `next`, `list`, `get`, `status` with AND-composed filters and pipe-safe output formats.
-- **Four transports, one core** — a CLI, an MCP server for agents, an HTTP API, and an installable web console.
-- **Append-only history** — abandoned work stays abandoned; nothing is deleted.
+- Organizes projects, initiatives, phases, and tasks.
+- Derives queues, status rollups, and blockers when queried.
+- Preserves work products as Artifacts and temporary context as Scratchpads.
+- Tracks new ideas and cross-project requests as Seeds.
+- Gives agents session context and operators a console across projects.
 
-## Derive, don't store
+## Store facts, derive the view
 
-The spine running through every design decision: mimir stores work-state facts, never derived state or a consumer's semantics. Caching a rollup would reintroduce the very sync problem the tool exists to remove — so "what's next," "what's blocked," and "what's stale" are answered at read time. Rank, the one true ordering, beats every priority heuristic, because sometimes you place a P2 ahead of a P0 for a reason the system can't see.
+Markdown is the system of record. Norn owns validated access to the vault. Mimir derives what is ready, awaiting, or stale from the stored facts, so there is no second project-status record to synchronize.
