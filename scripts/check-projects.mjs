@@ -11,9 +11,15 @@ for (const path of ['index.html', 'projects/index.html', 'about/index.html']) {
   const html = await read(path);
   assert.ok(!html.includes('/projects/saga/'), `${path} must not promote retired Saga`);
 }
-for (const path of ['index.html', 'projects/index.html']) {
+for (const [path, expected] of [
+  ['index.html', ['norn', 'mimir', 'loomcli']],
+  ['projects/index.html', current],
+]) {
   const html = await read(path);
-  for (const slug of current) assert.ok(html.includes(`/projects/${slug}/`), `${path} must link to ${slug}`);
+  const rows = [...html.matchAll(/<a\b[^>]*class="group [^"]*"[^>]*href="([^"]+)"/g)]
+    .map((match) => match[1]);
+  assert.deepEqual(rows, expected.map((slug) => `/projects/${slug}/`),
+    `${path} must show exactly its intended project rows`);
 }
 const saga = await read('projects/saga/index.html');
 assert.match(saga, /Retired/);
